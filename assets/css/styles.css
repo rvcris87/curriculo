@@ -198,7 +198,6 @@ ul {
 .hero-text,
 .content-card p,
 .project-card p,
-.future-card li,
 .timeline-card p {
   color: var(--text-secondary);
   font-size: 1rem;
@@ -309,7 +308,6 @@ ul {
 .project-card,
 .skill-card,
 .contact-card,
-.future-card,
 .timeline-card {
   background: linear-gradient(180deg, rgba(17, 24, 39, 0.96), rgba(12, 19, 34, 0.96));
   border: 1px solid var(--surface-border);
@@ -317,8 +315,7 @@ ul {
 }
 
 .hero-panel,
-.contact-card,
-.future-card {
+.contact-card {
   border-radius: var(--radius-lg);
 }
 
@@ -439,7 +436,8 @@ ul {
 }
 
 .tech-groups,
-.timeline-grid {
+.timeline-grid,
+.complementary-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
@@ -524,10 +522,6 @@ ul {
   margin-top: auto;
 }
 
-.project-placeholder {
-  justify-content: space-between;
-}
-
 .skills-grid {
   grid-template-columns: repeat(5, minmax(0, 1fr));
 }
@@ -558,8 +552,7 @@ ul {
   margin-top: 0.7rem;
 }
 
-.contact-card,
-.future-card {
+.contact-card {
   padding: 2rem;
 }
 
@@ -619,33 +612,60 @@ ul {
   margin-top: 1rem;
 }
 
-.section-future {
-  padding-top: 0;
-}
-
-.future-card h2 {
-  font-size: clamp(1.7rem, 3vw, 2.35rem);
-  margin: 0.8rem 0 1rem;
-}
-
-.future-list {
+.complementary-grid {
   display: grid;
-  gap: 0.75rem;
+  gap: 1.5rem;
 }
 
-.future-list li {
-  padding-left: 1.4rem;
+.complementary-card {
+  background:
+    radial-gradient(circle at top right, rgba(37, 99, 235, 0.12), transparent 30%),
+    linear-gradient(180deg, rgba(17, 24, 39, 0.96), rgba(12, 19, 34, 0.96));
+}
+
+.study-list {
+  display: grid;
+  gap: 0.8rem;
+  margin-top: 0.35rem;
+}
+
+.study-list li {
+  color: var(--text-secondary);
+  padding-left: 1.35rem;
   position: relative;
 }
 
-.future-list li::before {
-  color: var(--accent-soft);
-  content: "\2022";
+.study-list li::before {
+  background: linear-gradient(180deg, var(--accent), var(--accent-soft));
+  border-radius: 999px;
+  content: "";
+  height: 8px;
   left: 0;
   position: absolute;
+  top: 0.6rem;
+  width: 8px;
 }
 
-/* Animacoes leves aplicadas apenas quando o elemento entra em tela. */
+.learning-highlight {
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(96, 165, 250, 0.18);
+  border-radius: var(--radius-sm);
+  margin-top: 1.2rem;
+  padding: 1rem;
+}
+
+.learning-highlight strong {
+  color: var(--text-primary);
+  display: block;
+  font-size: 0.98rem;
+  margin-bottom: 0.35rem;
+}
+
+.learning-highlight p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -670,7 +690,8 @@ ul {
   .projects-grid,
   .skills-grid,
   .contact-grid,
-  .timeline-grid {
+  .timeline-grid,
+  .complementary-grid {
     grid-template-columns: 1fr;
   }
 
@@ -739,7 +760,6 @@ ul {
   }
 
   .contact-card,
-  .future-card,
   .hero-card,
   .content-card,
   .project-card,
