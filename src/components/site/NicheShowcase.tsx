@@ -1,83 +1,102 @@
-import { MessageCircle } from "lucide-react";
+import { ArrowUpRight, MessageCircle } from "lucide-react";
 import { SectionHeader } from "./SectionHeader";
 import { niches } from "@/data/niches";
 import { waLink } from "@/lib/contact";
 
 export function NicheShowcase() {
   return (
-    <section className="relative py-24">
+    <section id="modelos-de-sites" className="relative py-24">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeader
-          eyebrow="Inspiração por nicho"
+          eyebrow="Projetos para nichos"
           title={
             <>
-              Como seu site pode <span className="text-gradient">se apresentar</span> para o cliente
+              Modelos de sites que <span className="text-gradient">desenvolvo</span>
             </>
           }
-          description="Cada negócio precisa de uma página com estratégia, visual e informações certas. Veja exemplos de como diferentes nichos podem transformar sua presença digital."
+          description="Uma vitrine visual com modelos prontos para inspirar negocios locais que precisam de presenca digital elegante, responsiva e focada em conversao."
           align="center"
         />
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {niches.map((n) => (
+        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {niches.map((project) => (
             <article
-              key={n.title}
-              className="group relative flex flex-col overflow-hidden rounded-2xl glass border-gradient card-shadow transition hover:-translate-y-1"
+              key={project.name}
+              className="group relative flex min-h-full flex-col overflow-hidden rounded-3xl glass card-shadow ring-1 ring-white/10 transition duration-300 hover:-translate-y-1 hover:bg-white/[0.06] hover:ring-brand-2/40 hover:shadow-[0_32px_90px_-42px_rgba(56,189,248,0.55)]"
             >
-              <div className="relative aspect-[4/3] overflow-hidden bg-surface">
+              <a
+                href={project.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`Ver projeto ${project.name}`}
+                className="relative block aspect-[16/11] overflow-hidden bg-surface"
+              >
                 <img
-                  src={n.image}
-                  alt={`Exemplo de site para ${n.title}`}
-                  width={1024}
-                  height={768}
+                  src={project.image}
+                  alt={`Mockup do site ${project.name}`}
+                  width={1200}
+                  height={825}
                   loading="lazy"
                   className="h-full w-full object-cover object-center transition duration-700 group-hover:scale-105"
-                  style={{ objectPosition: n.imagePosition }}
+                  style={{ objectPosition: project.imagePosition }}
                 />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/45 to-background/5" />
-              </div>
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/35 to-transparent" />
+                <div className="absolute left-4 top-4 rounded-full border border-brand-2/30 bg-background/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-brand-2 backdrop-blur">
+                  {project.niche}
+                </div>
+                <div className="absolute bottom-4 right-4 grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/10 text-foreground backdrop-blur transition group-hover:bg-brand-2 group-hover:text-white">
+                  <ArrowUpRight className="h-4 w-4" />
+                </div>
+              </a>
 
-              <div className="flex flex-1 flex-col gap-4 p-6">
+              <div className="flex flex-1 flex-col p-6">
                 <div>
-                  <h3 className="text-xl font-semibold">{n.title}</h3>
-                  <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">{n.desc}</p>
+                  <div className="text-xs uppercase tracking-wider text-muted-foreground">
+                    {project.niche}
+                  </div>
+                  <h3 className="mt-1 text-2xl font-bold">{project.name}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    {project.description}
+                  </p>
                 </div>
 
-                <div className="flex flex-wrap gap-1.5">
-                  {n.tags.map((t) => (
+                <div className="mt-5 flex flex-wrap gap-1.5">
+                  {project.tags.map((tag) => (
                     <span
-                      key={t}
+                      key={tag}
                       className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[11px] font-medium text-muted-foreground"
                     >
-                      {t}
+                      {tag}
                     </span>
                   ))}
                 </div>
 
-                <blockquote className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
-                  <p className="text-sm italic text-foreground/90 leading-relaxed">{n.feedback}</p>
-                  <footer className="mt-2 text-[11px] uppercase tracking-wider text-muted-foreground">
-                    {n.author}
-                  </footer>
-                </blockquote>
-
-                <a
-                  href={waLink(`Olá, Cristine! Vi seu portfólio e tenho interesse em um site para meu negócio (${n.title}).`)}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-auto inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
-                >
-                  <MessageCircle className="h-4 w-4" />
-                  Quero um site assim
-                </a>
+                <div className="mt-auto grid gap-2 pt-6 sm:grid-cols-2">
+                  <a
+                    href={project.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-semibold text-foreground transition hover:border-brand-2/50 hover:bg-white/[0.08] hover:text-brand-2"
+                  >
+                    Ver projeto
+                    <ArrowUpRight className="h-4 w-4" />
+                  </a>
+                  <a
+                    href={waLink(
+                      `Ola, Cristine! Vi o modelo ${project.name} no seu portfolio e quero um site assim.`,
+                    )}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-brand-2 px-4 py-3 text-center text-sm font-semibold text-white transition hover:opacity-90"
+                  >
+                    <MessageCircle className="h-4 w-4" />
+                    Quero um site assim
+                  </a>
+                </div>
               </div>
             </article>
           ))}
         </div>
-
-        <p className="mx-auto mt-10 max-w-2xl text-center text-xs text-muted-foreground">
-          Exemplos visuais e feedbacks ilustrativos para demonstrar possibilidades de aplicação por nicho.
-        </p>
       </div>
     </section>
   );
