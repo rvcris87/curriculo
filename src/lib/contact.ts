@@ -6,7 +6,7 @@ export const CONTACT = {
 };
 
 const DEFAULT_MSG =
-  "Olá, Cristine! Vi seu portfólio e tenho interesse em criar um site para meu negócio.";
+  "Oi, Cristine! Quero um site profissional para meu negócio.";
 
 export const waLink = (message: string = DEFAULT_MSG) =>
   `https://wa.me/${CONTACT.whatsappNumber}?text=${encodeURIComponent(message)}`;

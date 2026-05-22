@@ -6,30 +6,53 @@ const services = [
   {
     name: "Site Essencial",
     tagline: "Para começar com presença profissional.",
-    items: ["Página única", "Apresentação da empresa", "Serviços organizados", "Localização", "Botão para WhatsApp"],
+    items: [
+      "Página única",
+      "Apresentação da empresa",
+      "Serviços organizados",
+      "Localização",
+      "Botão para WhatsApp",
+    ],
     highlighted: false,
   },
   {
     name: "Site Profissional",
     tagline: "Página completa e estratégica para conversão.",
-    items: ["Copy comercial", "Galeria de fotos", "Depoimentos", "Perguntas frequentes", "Estrutura focada em conversão"],
+    items: [
+      "Copy comercial",
+      "Galeria de fotos",
+      "Depoimentos",
+      "Perguntas frequentes",
+      "Estrutura focada em conversão",
+    ],
     highlighted: true,
   },
   {
     name: "Sistema Personalizado",
     tagline: "Funcionalidades além de uma página simples.",
-    items: ["Login e painel administrativo", "Cadastro de clientes ou produtos", "Banco de dados", "Formulários e upload", "Dashboards"],
+    items: [
+      "Login e painel administrativo",
+      "Cadastro de clientes ou produtos",
+      "Banco de dados",
+      "Formulários e upload",
+      "Dashboards",
+    ],
     highlighted: false,
   },
 ];
 
 export function Services() {
   return (
-    <section id="servicos" className="relative py-24">
+    <section id="servicos" className="relative py-16 md:py-20">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeader
           eyebrow="Serviços"
-          title={<>Como posso <span className="text-gradient">ajudar seu negócio</span></>}
+          title={
+            <>
+              Como posso{" "}
+              <span className="text-gradient">ajudar seu negócio</span>
+            </>
+          }
           description="Três formatos para começar — escolha o que faz mais sentido para a sua fase atual."
         />
 
@@ -37,10 +60,8 @@ export function Services() {
           {services.map((s) => (
             <div
               key={s.name}
-              className={`relative rounded-3xl p-7 card-shadow transition hover:-translate-y-1 ${
-                s.highlighted
-                  ? "glass-strong border-gradient glow"
-                  : "glass"
+              className={`card-animated reveal-3d relative rounded-3xl p-7 card-shadow transition hover:-translate-y-1 ${
+                s.highlighted ? "glass-strong border-gradient glow" : "glass"
               }`}
             >
               {s.highlighted && (
@@ -63,7 +84,9 @@ export function Services() {
               </ul>
 
               <a
-                href={waLink(`Olá, Cristine! Vi seu portfólio e tenho interesse no plano ${s.name}.`)}
+                href={waLink(
+                  `Olá, Cristine! Vi seu portfólio e tenho interesse no plano ${s.name}.`,
+                )}
                 target="_blank"
                 rel="noreferrer"
                 className={`mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold transition ${
