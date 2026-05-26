@@ -9,126 +9,86 @@ import {
   Star,
   TrendingUp,
   CheckCircle2,
+  MapPin,
+  Clock,
+  Scissors,
+  Calendar,
 } from "lucide-react";
-import { waLink } from "@/lib/contact";
 
 const WA_HREF =
   "https://wa.me/5581987530744?text=Oi%2C%20Cristine!%20Quero%20um%20site%20profissional%20para%20meu%20neg%C3%B3cio.";
-
-const trustBadges = [
-  { icon: Smartphone, label: "Sites responsivos" },
-  { icon: Target, label: "Foco em conversão" },
-  { icon: MessageCircle, label: "WhatsApp integrado" },
-  { icon: Sparkles, label: "Visual premium" },
-  { icon: Zap, label: "Entrega estratégica" },
-  { icon: Star, label: "Design moderno" },
-  { icon: CheckCircle2, label: "Projetos reais" },
-  { icon: TrendingUp, label: "Resultados mensuráveis" },
-];
 
 export function Hero() {
   return (
     <section
       id="inicio"
-      className="hero-scene relative overflow-hidden pt-32 pb-0 md:pt-40"
+      className="hero-scene relative overflow-hidden pt-24 pb-0 md:pt-32"
     >
-      {/* Backgrounds */}
-      <div
-        className="aurora-field absolute inset-0 pointer-events-none"
-        data-depth="0.35"
-      />
-      <div
-        className="mesh-particles absolute inset-0 pointer-events-none"
-        data-depth="0.55"
-      />
-      <div
-        className="absolute inset-0 grid-bg pointer-events-none"
-        data-depth="0.8"
-      />
+      {/* ── Neutral premium dark background ── */}
+      <div className="aurora-field absolute inset-0 pointer-events-none" />
+      <div className="absolute inset-0 grid-bg pointer-events-none" />
 
-      {/* Floating decorative screens */}
-      <div
-        className="hero-float-field pointer-events-none absolute inset-0"
-        aria-hidden="true"
-      >
-        <div
-          className="floating-screen floating-screen-a glass-strong"
-          data-depth="1.1"
-        />
-        <div
-          className="floating-screen floating-screen-b glass"
-          data-depth="1.6"
-        />
-        <div
-          className="floating-screen floating-screen-c glass-strong"
-          data-depth="2"
-        />
-      </div>
-
-      {/* Soft exit gradient */}
       <div
         className="hero-soft-exit pointer-events-none absolute inset-x-0 bottom-0"
         aria-hidden="true"
       />
 
-      {/* Main Content */}
-      <div className="relative mx-auto max-w-7xl px-4">
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-8 items-center pb-20 md:pb-28">
-          {/* Copy */}
-          <div className="hero-copy lg:col-span-7">
-            {/* Pill badge */}
+      {/* ── Content Grid ── */}
+      <div className="relative z-10 mx-auto max-w-7xl px-4">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-8 items-center pb-12 md:pb-16">
+
+          {/* ── Copy column ── */}
+          <div className="lg:col-span-6">
+            {/* Status indicator */}
             <motion.div
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="hero-stagger inline-flex items-center gap-2 rounded-full glass px-3 py-1.5 text-xs text-muted-foreground"
+              transition={{ duration: 0.45 }}
+              className="inline-flex items-center gap-2 text-[10px] font-mono tracking-widest uppercase text-brand font-semibold mb-4"
             >
-              <span className="h-2 w-2 rounded-full bg-brand animate-pulse" />
-              Disponível para novos projetos
+              <span className="h-1.5 w-1.5 rounded-full bg-brand animate-pulse" />
+              Desenvolvedora Web & Especialista em Conversão
             </motion.div>
 
             {/* Headline */}
             <motion.h1
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.05 }}
-              className="hero-stagger mt-6 text-4xl font-bold leading-[1.08] sm:text-5xl md:text-6xl lg:text-[4rem] xl:text-[4.5rem]"
+              transition={{ duration: 0.55, delay: 0.06 }}
+              className="text-4xl font-bold leading-[1.15] sm:text-5xl md:text-6xl lg:text-[3.5rem] xl:text-[3.8rem]"
             >
               Transformo negócios locais em{" "}
-              <span className="text-gradient">
-                marcas mais profissionais
-              </span>{" "}
-              no digital
+              <span className="text-gradient">marcas profissionais</span> no digital
             </motion.h1>
 
             {/* Subheadline */}
             <motion.p
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.15 }}
-              className="hero-stagger mt-6 max-w-2xl text-base sm:text-lg text-muted-foreground leading-relaxed"
+              transition={{ duration: 0.55, delay: 0.14 }}
+              className="mt-5 max-w-xl text-base sm:text-lg text-muted-foreground leading-relaxed"
             >
-              Crio sites modernos, rápidos e estratégicos para barbearias,
-              clínicas, lojas, restaurantes e prestadores de serviço atraírem
-              mais clientes pelo WhatsApp.
+              Crio sites e landing pages de altíssima conversão para barbearias,
+              clínicas, lojas e prestadores de serviço que desejam atrair novos
+              clientes e valorizar sua marca.
             </motion.p>
 
-            {/* CTA Buttons */}
+            {/* CTA Group */}
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.28 }}
-              className="hero-stagger mt-9 flex flex-wrap gap-3"
+              transition={{ duration: 0.5, delay: 0.22 }}
+              className="mt-8 flex flex-wrap gap-3"
             >
               <a
                 id="hero-cta-whatsapp"
                 href={WA_HREF}
                 target="_blank"
                 rel="noreferrer"
-                className="magnetic-btn group inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition hover:opacity-90 glow"
+                className="magnetic-btn group inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition hover:opacity-90 shadow-lg shadow-primary/10"
               >
                 <MessageCircle className="h-4 w-4" />
-                Quero um site premium
+                Quero um site profissional
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </a>
               <a
@@ -139,181 +99,208 @@ export function Hero() {
                 Ver modelos por nicho
               </a>
             </motion.div>
+
+            {/* Core indicators */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.32 }}
+              className="mt-8 flex flex-wrap gap-2"
+            >
+              {[
+                { icon: Smartphone, label: "Foco em Celular" },
+                { icon: MessageCircle, label: "Botões de WhatsApp Estratégicos" },
+                { icon: Sparkles, label: "Visual Limpo e Premium" },
+                { icon: CheckCircle2, label: "Sem Mensalidades" },
+              ].map(({ icon: Icon, label }) => (
+                <span
+                  key={label}
+                  className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.04] border border-white/[0.06] px-3 py-1.5 text-xs text-muted-foreground"
+                >
+                  <Icon className="h-3.5 w-3.5 text-brand" />
+                  {label}
+                </span>
+              ))}
+            </motion.div>
           </div>
 
-          {/* Visual */}
+          {/* ── Visual Column (Mockup) ── */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="hero-visual-wrap lg:col-span-5"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.18 }}
+            className="lg:col-span-6 relative"
           >
             <HeroVisual />
           </motion.div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <a
-        href="#problema"
-        className="scroll-indicator"
-        aria-label="Rolar para a próxima seção"
-      >
-        <span />
-      </a>
-
-      {/* Authority Strip */}
+      {/* Authority Marquee */}
       <AuthorityStrip />
     </section>
   );
 }
 
+/* ─────────────────────────────────────────────
+   HeroVisual – Detailed Mockup of a Real Site
+───────────────────────────────────────────── */
 function HeroVisual() {
   return (
-    <div
-      className="hero-device relative mx-auto aspect-[4/5] w-full max-w-md"
-      data-depth="1.35"
-    >
-      {/* Ambient glow */}
-      <div className="absolute -inset-10 -z-10 rounded-full bg-gradient-to-br from-brand/30 via-brand-2/20 to-brand-3/30 blur-3xl" />
+    <div className="relative mx-auto w-full max-w-xl">
+      {/* Subtle border glow overlay */}
+      <div className="absolute -inset-1 rounded-2xl bg-white/[0.02] blur-md -z-10" />
 
-      {/* Mock browser card */}
-      <div className="hero-device-shell absolute inset-0 glass-strong rounded-3xl border-gradient card-shadow overflow-hidden">
-        {/* Browser chrome */}
-        <div className="flex items-center gap-1.5 border-b border-white/5 px-4 py-3">
-          <div className="h-2.5 w-2.5 rounded-full bg-white/15" />
-          <div className="h-2.5 w-2.5 rounded-full bg-white/15" />
-          <div className="h-2.5 w-2.5 rounded-full bg-white/15" />
-          <div className="ml-3 flex-1 rounded-md bg-white/5 h-5 flex items-center px-3">
-            <span className="text-[9px] text-white/30">meusite.com.br</span>
+      {/* Browser shell container */}
+      <div className="relative rounded-xl border border-white/[0.08] bg-[#0c0d0f] shadow-2xl overflow-hidden">
+        
+        {/* Browser header strip */}
+        <div className="flex items-center gap-2 border-b border-white/[0.05] bg-white/[0.02] px-4 py-3">
+          <div className="flex gap-1.5">
+            <div className="h-2.5 w-2.5 rounded-full bg-red-500/60" />
+            <div className="h-2.5 w-2.5 rounded-full bg-yellow-500/60" />
+            <div className="h-2.5 w-2.5 rounded-full bg-green-500/60" />
+          </div>
+          <div className="ml-4 flex-1 rounded bg-white/[0.04] h-5 flex items-center px-3 justify-between">
+            <span className="text-[9px] text-white/30 font-mono">
+              barbeariablanck.com.br
+            </span>
+            <span className="text-[9px] text-emerald-400 font-mono flex items-center gap-1">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+              online
+            </span>
           </div>
         </div>
 
-        {/* Mock site content */}
-        <div className="space-y-4 p-5">
-          {/* Niche tag */}
-          <div className="inline-flex items-center gap-1.5 rounded-full bg-brand/20 px-2.5 py-1">
-            <div className="h-1.5 w-1.5 rounded-full bg-brand animate-pulse" />
-            <span className="text-[10px] text-brand font-medium">Barbearia Premium</span>
+        {/* Realistic Mini Landing Page Content */}
+        <div className="p-4 space-y-4">
+          
+          {/* Site Menu Bar */}
+          <div className="flex items-center justify-between border-b border-white/[0.04] pb-2">
+            <div className="flex items-center gap-1.5">
+              <Scissors className="h-4.5 w-4.5 text-amber-500" />
+              <span className="text-[10px] font-bold tracking-wider text-white">BLANCK</span>
+            </div>
+            <div className="flex gap-3 text-[9px] text-white/50 font-medium">
+              <span>Início</span>
+              <span>Serviços</span>
+              <span>Contatos</span>
+            </div>
           </div>
 
-          {/* Mock headline */}
+          {/* Mock Hero Section */}
+          <div className="rounded-lg bg-gradient-to-r from-amber-950/20 to-amber-900/10 border border-amber-500/10 p-4 relative overflow-hidden">
+            <div className="absolute right-2 top-2 opacity-10">
+              <Scissors className="h-24 w-24 text-amber-500" />
+            </div>
+            <div className="max-w-[70%] space-y-2">
+              <div className="text-[9px] font-mono tracking-widest text-amber-400 uppercase font-semibold">
+                Estilo & Tradição
+              </div>
+              <h4 className="text-sm font-bold text-white leading-tight">
+                Corte e Estilo de Alto Padrão em Recife
+              </h4>
+              <p className="text-[9px] text-white/50">
+                Agende seu horário com os melhores profissionais da região.
+              </p>
+              
+              {/* WhatsApp Action Button */}
+              <div className="inline-flex items-center gap-1.5 rounded-md bg-[#25D366] hover:bg-[#25D366]/90 px-3 py-1.5 text-[9px] font-bold text-white shadow-md">
+                <MessageCircle className="h-3 w-3 fill-white text-[#25D366]" />
+                Agendar pelo WhatsApp
+              </div>
+            </div>
+          </div>
+
+          {/* Mock Services Section */}
           <div className="space-y-2">
-            <div className="h-4 w-3/4 rounded-md bg-white/15" />
-            <div className="h-4 w-1/2 rounded-md bg-white/10" />
-          </div>
-
-          {/* Mock subtext */}
-          <div className="space-y-1.5">
-            <div className="h-2 w-full rounded bg-white/6" />
-            <div className="h-2 w-5/6 rounded bg-white/6" />
-            <div className="h-2 w-4/6 rounded bg-white/6" />
-          </div>
-
-          {/* Mock image grid */}
-          <div className="hero-device-grid grid grid-cols-2 gap-3 pt-1">
-            <div className="h-20 rounded-xl bg-gradient-to-br from-brand/30 to-brand-2/20 flex items-end p-2">
-              <div className="h-2 w-2/3 rounded bg-white/20" />
+            <div className="flex justify-between items-center">
+              <span className="text-[10px] font-bold text-white uppercase tracking-wider">Principais Serviços</span>
+              <span className="text-[8px] text-amber-400">ver todos</span>
             </div>
-            <div className="h-20 rounded-xl bg-gradient-to-br from-brand-3/30 to-brand/10 flex items-end p-2">
-              <div className="h-2 w-1/2 rounded bg-white/20" />
-            </div>
-          </div>
-
-          {/* Mock CTA button */}
-          <div className="flex items-center gap-2">
-            <div className="h-9 w-36 rounded-xl bg-primary/90 flex items-center justify-center gap-1.5">
-              <div className="h-2 w-2 rounded-full bg-primary-foreground/60" />
-              <div className="h-2 w-16 rounded bg-primary-foreground/60" />
+            <div className="grid grid-cols-2 gap-2">
+              {[
+                { name: "Corte Moderno", price: "R$ 45", desc: "Degradê, social ou clássico" },
+                { name: "Barba & Toalha Quente", price: "R$ 35", desc: "Alinhamento com navalha" },
+                { name: "Combo Premium", price: "R$ 70", desc: "Corte + barba + hidratação" },
+                { name: "Design de Sobrancelha", price: "R$ 20", desc: "Limpeza detalhada" },
+              ].map((s) => (
+                <div key={s.name} className="rounded border border-white/[0.04] bg-white/[0.01] p-2.5 space-y-1">
+                  <div className="flex justify-between items-center text-[9px]">
+                    <span className="font-semibold text-white/80">{s.name}</span>
+                    <span className="text-amber-400 font-bold">{s.price}</span>
+                  </div>
+                  <p className="text-[8px] text-white/40 leading-normal">{s.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
+
+          {/* Location & Details Block */}
+          <div className="grid grid-cols-3 gap-2 border-t border-white/[0.04] pt-3 text-[9px]">
+            <div className="flex items-center gap-1.5 text-white/60">
+              <MapPin className="h-3.5 w-3.5 text-amber-500 shrink-0" />
+              <div className="min-w-0">
+                <div className="font-semibold text-white/80">Endereço</div>
+                <div className="text-white/40 truncate">Av. Boa Viagem, PE</div>
+              </div>
+            </div>
+            <div className="flex items-center gap-1.5 text-white/60">
+              <Clock className="h-3.5 w-3.5 text-amber-500 shrink-0" />
+              <div>
+                <div className="font-semibold text-white/80">Funcionamento</div>
+                <div className="text-white/40">Seg a Sáb 9h-20h</div>
+              </div>
+            </div>
+            <div className="flex items-center gap-1.5 text-white/60">
+              <Star className="h-3.5 w-3.5 text-amber-500 shrink-0 fill-amber-500/20" />
+              <div>
+                <div className="font-semibold text-white/80">Avaliação Google</div>
+                <div className="text-white/40 flex items-center gap-0.5">
+                  <span className="font-bold text-white/80">4.9</span>
+                  <span>(180+ reviews)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
-
-      {/* Floating metric: Conversão */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.65 }}
-        className="hero-orbit-card absolute -left-6 bottom-10 glass-strong card-shadow rounded-2xl p-4 w-44"
-        data-depth="2.2"
-      >
-        <div className="text-xs text-muted-foreground">Conversão via WA</div>
-        <div className="mt-1 text-2xl font-bold text-gradient">+218%</div>
-        <div className="mt-3 h-1.5 rounded-full bg-white/5">
-          <div className="h-1.5 w-3/4 rounded-full bg-gradient-to-r from-brand to-brand-3" />
-        </div>
-      </motion.div>
-
-      {/* Floating chip: WhatsApp */}
-      <motion.div
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.75 }}
-        className="hero-orbit-card hero-orbit-card-alt absolute -right-3 top-10 glass-strong card-shadow rounded-2xl px-4 py-3 flex items-center gap-2"
-        data-depth="2.6"
-      >
-        <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#25D366]/20">
-          <MessageCircle className="h-3.5 w-3.5 text-[#25D366]" />
-        </div>
-        <div className="text-xs">
-          <div className="font-semibold">WhatsApp ativo</div>
-          <div className="text-muted-foreground">resposta rápida</div>
-        </div>
-      </motion.div>
-
-      {/* Floating chip: Star rating */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.85 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.85 }}
-        className="absolute -bottom-2 right-4 glass-strong card-shadow rounded-2xl px-3.5 py-2.5 flex items-center gap-2"
-        data-depth="2"
-      >
-        <div className="flex gap-0.5">
-          {[...Array(5)].map((_, i) => (
-            <Star
-              key={i}
-              className="h-3 w-3 fill-amber-400 text-amber-400"
-            />
-          ))}
-        </div>
-        <div className="text-xs font-medium">Site entregue</div>
-      </motion.div>
     </div>
   );
 }
 
+/* ─────────────────────────────────────────────
+   AuthorityStrip – scrolling marquee
+───────────────────────────────────────────── */
 function AuthorityStrip() {
   const items = [
     { icon: Smartphone, label: "Sites responsivos" },
     { icon: Target, label: "Foco em conversão" },
     { icon: MessageCircle, label: "WhatsApp integrado" },
     { icon: Sparkles, label: "Visual premium" },
-    { icon: Zap, label: "Entrega estratégica" },
+    { icon: Zap, label: "Entrega rápida" },
     { icon: Star, label: "Design moderno" },
     { icon: CheckCircle2, label: "Projetos reais" },
     { icon: TrendingUp, label: "Mais clientes" },
   ];
 
-  // Duplicate for seamless loop
   const marqueeItems = [...items, ...items];
 
   return (
-    <div className="relative border-t border-white/5 bg-white/[0.02] overflow-hidden py-5">
-      {/* Fade edges */}
-      <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-background to-transparent" />
-      <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-background to-transparent" />
+    <div className="relative border-t border-white/[0.04] bg-white/[0.01] overflow-hidden py-3">
+      <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-r from-background to-transparent" />
+      <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-l from-background to-transparent" />
 
       <div className="authority-marquee flex gap-8 w-max">
         {marqueeItems.map((item, i) => (
           <div
             key={i}
-            className="inline-flex items-center gap-2 whitespace-nowrap text-sm text-muted-foreground flex-shrink-0"
+            className="inline-flex items-center gap-2 whitespace-nowrap text-xs text-muted-foreground flex-shrink-0"
           >
-            <item.icon className="h-4 w-4 text-brand flex-shrink-0" />
+            <item.icon className="h-3.5 w-3.5 text-brand flex-shrink-0" />
             <span className="font-medium">{item.label}</span>
-            <span className="text-white/15 text-base ml-4">·</span>
+            <span className="text-white/10 ml-4">·</span>
           </div>
         ))}
       </div>

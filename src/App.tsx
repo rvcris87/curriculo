@@ -11,6 +11,7 @@ import { NicheShowcase } from "@/components/site/NicheShowcase";
 import { Problem } from "@/components/site/Problem";
 import { Projects } from "@/components/site/Projects";
 import { Services } from "@/components/site/Services";
+import { Storytelling } from "@/components/site/Storytelling";
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
       <main>
         <Hero />
         <Problem />
+        <Storytelling />
         <BentoSolutions />
         <NicheShowcase />
         <Method />

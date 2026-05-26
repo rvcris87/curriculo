@@ -4,19 +4,10 @@ import { waLink } from "@/lib/contact";
 
 const links = [
   { href: "#inicio", label: "Início" },
-  { href: "#problema", label: "Problema" },
+  { href: "#solucoes", label: "Soluções" },
+  { href: "#modelos", label: "Modelos" },
   { href: "#servicos", label: "Serviços" },
-  { href: "#projetos", label: "Projetos" },
-  { href: "#modelos-de-sites", label: "Modelos" },
   { href: "#metodo", label: "Método" },
-  { href: "#sobre", label: "Sobre" },
-  { href: "#contato", label: "Contato" },
-];
-
-export function Header() {
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
-
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     onScroll();

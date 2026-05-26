@@ -11,6 +11,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { SectionHeader } from "./SectionHeader";
+import { useSpatialHover } from "../../hooks/useSpatialHover";
 
 const WA_HREF =
   "https://wa.me/5581987530744?text=Oi%2C%20Cristine!%20Quero%20um%20site%20profissional%20para%20meu%20neg%C3%B3cio.";
@@ -91,6 +92,7 @@ const cards: BentoCard[] = [
 export function BentoSolutions() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const spatialHover = useSpatialHover();
 
   return (
     <section id="solucoes" className="relative py-16 md:py-20" ref={ref}>
@@ -119,24 +121,20 @@ export function BentoSolutions() {
           {cards.map((card, i) => (
             <motion.div
               key={card.title}
-              initial={{ opacity: 0, y: 28, rotateX: 8 }}
+              initial={{ opacity: 0, y: 28 }}
               animate={
                 isInView
-                  ? { opacity: 1, y: 0, rotateX: 0 }
-                  : { opacity: 0, y: 28, rotateX: 8 }
+                  ? { opacity: 1, y: 0 }
+                  : { opacity: 0, y: 28 }
               }
               transition={{
                 duration: 0.6,
                 delay: i * 0.08,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className={`bento-card group relative overflow-hidden rounded-2xl glass-strong border-gradient p-6 transition-all duration-500 hover:bg-white/[0.06] ${card.span}`}
+              {...spatialHover}
+              className={`spatial-card group p-6 transition-all duration-300 ${card.span}`}
             >
-              {/* Ambient glow on hover */}
-              <div
-                className={`absolute -inset-px rounded-2xl bg-gradient-to-br ${card.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 blur-xl`}
-              />
-
               <div className="relative z-10 flex flex-col h-full">
                 {/* Icon */}
                 <div

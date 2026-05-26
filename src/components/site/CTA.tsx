@@ -1,10 +1,15 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { MessageCircle, CheckCircle2 } from "lucide-react";
+import { useSpatialHover } from "../../hooks/useSpatialHover";
+
+const WA_HREF =
+  "https://wa.me/5581987530744?text=Oi%2C%20Cristine!%20Quero%20pedir%20um%20or%C3%A7amento%20para%20um%20site%20profissional.";
 
 export function CTA() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const spatialHover = useSpatialHover();
 
   const badges = [
     "Site responsivo",
@@ -14,76 +19,95 @@ export function CTA() {
   ];
 
   return (
-    <section id="contato" className="relative py-16 md:py-20" ref={ref}>
+    <section
+      id="contato"
+      className="relative py-16 md:py-24 overflow-hidden border-t border-white/[0.04]"
+      ref={ref}
+    >
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 bg-white/[0.01]"
+      />
+
       <div className="mx-auto max-w-5xl px-4">
         <motion.div
-          initial={{ opacity: 0, y: 32, scale: 0.98 }}
-          animate={
-            isInView
-              ? { opacity: 1, y: 0, scale: 1 }
-              : { opacity: 0, y: 32, scale: 0.98 }
-          }
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="relative overflow-hidden rounded-[2.5rem] glass-strong border-gradient p-10 md:p-16 text-center shadow-2xl"
+          {...spatialHover}
+          className="spatial-card relative overflow-hidden rounded-[2rem] text-center transition-all duration-300 shadow-2xl border border-white/[0.08]"
+          style={{
+            background: "linear-gradient(180deg, #111215 0%, #0c0d0f 100%)",
+          }}
         >
-          {/* Fundo elegante */}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-brand/10 via-transparent to-brand-2/10" />
-          <div className="pointer-events-none absolute -top-32 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-brand/30 blur-3xl opacity-50" />
-          <div className="pointer-events-none absolute -bottom-32 right-1/4 h-64 w-64 rounded-full bg-brand-2/20 blur-3xl opacity-40" />
-
-          <div className="relative z-10 flex flex-col items-center">
-            {/* Tag superior */}
-            <div className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-brand-2 border border-brand/20 shadow-[0_0_15px_rgba(56,189,248,0.15)]">
+          {/* ── Content layer ───────────────────────────────────────────── */}
+          <div className="relative z-10 flex flex-col items-center px-8 py-12 md:px-16 md:py-18">
+            {/* Status pill */}
+            <div className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-[10px] font-semibold uppercase tracking-widest text-brand border border-white/[0.08]">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-2 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-2"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-brand" />
               </span>
-              Projeto exclusivo
+              Vamos Conversar
             </div>
 
-            {/* Título e Subtítulo */}
-            <h2 className="mt-8 text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl md:text-5xl lg:text-[54px] max-w-3xl">
-              Pronta para transformar a{" "}
-              <span className="text-gradient">presença digital</span> do seu negócio?
-            </h2>
-            <p className="mx-auto mt-6 max-w-2xl text-base text-muted-foreground leading-relaxed sm:text-lg">
-              Me chama no WhatsApp e vamos entender qual tipo de site combina melhor com seu momento, seu público e seus objetivos.
-            </p>
+            {/* Headline */}
+            <motion.h2
+              initial={{ opacity: 0, y: 16 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+              transition={{ duration: 0.7, delay: 0.15 }}
+              className="mt-6 text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl md:text-5xl max-w-3xl animate-fade-in"
+            >
+              Vamos construir uma{" "}
+              <span className="text-gradient">presença digital</span> mais
+              profissional para o seu negócio?
+            </motion.h2>
 
-            {/* Selos de Qualidade */}
-            <div className="mt-10 flex flex-wrap justify-center gap-3">
+            {/* Sub-headline */}
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
+              transition={{ duration: 0.6, delay: 0.28 }}
+              className="mx-auto mt-5 max-w-2xl text-base text-muted-foreground leading-relaxed sm:text-lg"
+            >
+              Me chama no WhatsApp e eu te ajudo a entender qual tipo de site
+              combina melhor com seu momento.
+            </motion.p>
+
+            {/* Quality badges */}
+            <div className="mt-8 flex flex-wrap justify-center gap-2.5">
               {badges.map((badge, i) => (
                 <motion.div
                   key={badge}
                   initial={{ opacity: 0, y: 10 }}
                   animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-                  transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] px-3 py-1.5 text-xs text-muted-foreground/90 backdrop-blur-md"
+                  transition={{ duration: 0.5, delay: 0.35 + i * 0.08 }}
+                  className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] px-3 py-1.5 text-xs text-muted-foreground"
                 >
-                  <CheckCircle2 className="h-3.5 w-3.5 text-brand/70" />
+                  <CheckCircle2 className="h-3.5 w-3.5 text-brand" />
                   {badge}
                 </motion.div>
               ))}
             </div>
 
-            {/* Botão Principal */}
+            {/* Primary CTA */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.6, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-12"
+              transition={{ duration: 0.6, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-10"
             >
               <a
-                href="https://wa.me/5581987530744?text=Oi%2C%20Cristine!%20Quero%20pedir%20um%20or%C3%A7amento%20para%20um%20site%20profissional."
+                id="cta-final-whatsapp"
+                href={WA_HREF}
                 target="_blank"
                 rel="noreferrer"
-                className="group/btn relative inline-flex min-h-14 items-center justify-center gap-2.5 rounded-2xl bg-[#25D366] px-10 py-4 text-base font-bold text-white shadow-[0_0_30px_rgba(37,211,102,0.25)] transition-all hover:scale-[1.02] hover:shadow-[0_0_45px_rgba(37,211,102,0.4)]"
+                className="group/btn relative inline-flex min-h-14 items-center justify-center gap-2.5 rounded-xl bg-[#25D366] px-8 py-3.5 text-base font-bold text-white shadow-lg transition-all hover:scale-[1.01]"
               >
-                {/* Glow button background */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover/btn:animate-[shimmer_1.5s_infinite]" />
-                
-                <MessageCircle className="relative z-10 h-5 w-5" />
-                <span className="relative z-10">Pedir orçamento no WhatsApp</span>
+                <MessageCircle className="relative z-10 h-5 w-5 fill-white text-[#25D366]" />
+                <span className="relative z-10">
+                  Pedir orçamento no WhatsApp
+                </span>
               </a>
             </motion.div>
           </div>

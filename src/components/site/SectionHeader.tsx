@@ -20,16 +20,16 @@ export function SectionHeader({
       }`}
     >
       {eyebrow && (
-        <div className="section-eyebrow inline-flex items-center gap-2 rounded-full glass px-3 py-1 text-xs uppercase tracking-wider text-muted-foreground">
-          <span className="h-1.5 w-1.5 rounded-full bg-brand" />
-          {eyebrow}
+        <div className="font-mono text-[10px] tracking-widest uppercase text-brand font-semibold flex items-center justify-start gap-2 mb-3">
+          <span className="text-white/30">//</span>
+          <span>{eyebrow}</span>
         </div>
       )}
-      <h2 className="mt-4 text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
+      <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-5xl font-display leading-[1.1]">
         {title}
       </h2>
       {description && (
-        <p className="mt-4 text-base text-muted-foreground leading-relaxed sm:text-lg">
+        <p className="mt-4 text-sm text-muted-foreground leading-relaxed font-sans max-w-2xl">
           {description}
         </p>
       )}
