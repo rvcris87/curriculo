@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import { useRef } from "react";
 import { 
   AlertTriangle, 
   CheckCircle, 
@@ -41,15 +41,7 @@ function Dot({ index, scrollYProgress, onClick }: DotProps) {
 
 export function Storytelling() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isMobile, setIsMobile] = useState(false);
-
-  // Responsive check
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
+  const isMobile = true;
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -167,11 +159,11 @@ export function Storytelling() {
         </div>
       ) : (
         /* Desktop Layout */
-        <div className="relative h-[280vh] w-full">
-          <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
+        <div className="relative h-[170vh] w-full">
+          <div className="sticky top-24 h-[calc(100vh-6rem)] w-full flex items-start overflow-hidden pt-4">
             
             {/* Parallax Background Huge Text */}
-            <div className="absolute inset-x-0 top-1/3 text-center pointer-events-none select-none z-0">
+            <div className="absolute inset-x-0 top-8 text-center pointer-events-none select-none z-0">
               {scenes.map((scene, i) => {
                 const op = i === 0 ? scene1Opacity : i === 1 ? scene2Opacity : i === 2 ? scene3Opacity : scene4Opacity;
                 return (
@@ -187,10 +179,10 @@ export function Storytelling() {
             </div>
 
             {/* Main Content Grid */}
-            <div className="relative z-10 mx-auto max-w-7xl px-8 w-full grid grid-cols-12 gap-8 items-center h-full">
+            <div className="relative z-10 mx-auto max-w-7xl px-8 w-full grid grid-cols-12 gap-8 items-start h-full pt-2">
               
               {/* Left Column: Progress Indicators and Rotating Text Copy */}
-              <div className="col-span-5 flex gap-8 items-center h-full py-20 relative">
+              <div className="col-span-5 flex gap-8 items-start h-full py-2 relative">
                 
                 {/* Immersive Vertical Progress Bar */}
                 <div className="flex flex-col items-center justify-between h-[300px] w-4 relative">
@@ -295,7 +287,7 @@ export function Storytelling() {
               </div>
 
               {/* Right Column: Visual Stage */}
-              <div className="col-span-7 h-full flex items-center justify-center relative">
+              <div className="col-span-7 h-full flex items-start justify-center relative pt-2">
                 <motion.div
                   style={{ scale: mockScale, rotate: mockRotate }}
                   className="relative w-[480px] aspect-[4/3] rounded-2xl glass-strong border-gradient p-1 card-shadow overflow-hidden transition-all duration-300"
