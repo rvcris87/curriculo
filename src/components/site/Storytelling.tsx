@@ -167,7 +167,7 @@ export function Storytelling() {
         </div>
       ) : (
         /* Desktop Layout */
-        <div className="relative h-[400vh] w-full">
+        <div className="relative h-[280vh] w-full">
           <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
             
             {/* Parallax Background Huge Text */}

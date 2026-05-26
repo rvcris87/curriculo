@@ -4,9 +4,10 @@ import { waLink } from "@/lib/contact";
 
 const links = [
   { href: "#inicio", label: "Início" },
-  { href: "#solucoes", label: "Soluções" },
-  { href: "#modelos", label: "Modelos" },
+  { href: "#problema", label: "Problema" },
   { href: "#servicos", label: "Serviços" },
+  { href: "#projetos", label: "Projetos" },
+  { href: "#modelos", label: "Modelos" },
   { href: "#metodo", label: "Método" },
   { href: "#sobre", label: "Sobre" },
   { href: "#contato", label: "Contato" },
@@ -36,7 +37,7 @@ export function Header() {
           }`}
         >
           <a href="#inicio" className="flex items-center gap-2">
-            <div className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-brand to-brand-3 text-primary-foreground font-bold text-sm">
+            <div className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-brand to-brand-3 text-primary-foreground font-bold">
               CR
             </div>
             <div className="hidden sm:block">
