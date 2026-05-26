@@ -8,6 +8,14 @@ const links = [
   { href: "#modelos", label: "Modelos" },
   { href: "#servicos", label: "Serviços" },
   { href: "#metodo", label: "Método" },
+  { href: "#sobre", label: "Sobre" },
+  { href: "#contato", label: "Contato" },
+];
+
+export function Header() {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     onScroll();
@@ -28,7 +36,7 @@ const links = [
           }`}
         >
           <a href="#inicio" className="flex items-center gap-2">
-            <div className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-brand to-brand-3 text-primary-foreground font-bold">
+            <div className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-brand to-brand-3 text-primary-foreground font-bold text-sm">
               CR
             </div>
             <div className="hidden sm:block">

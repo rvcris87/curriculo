@@ -93,7 +93,7 @@ export function Hero() {
               </a>
               <a
                 id="hero-cta-nichos"
-                href="#nichos"
+                href="#modelos"
                 className="inline-flex items-center gap-2 rounded-xl glass px-6 py-3.5 text-sm font-semibold text-foreground transition hover:bg-white/10"
               >
                 Ver modelos por nicho
