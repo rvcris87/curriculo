@@ -1,10 +1,12 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { MessageCircle, CheckCircle2 } from "lucide-react";
+import { waLink } from "@/lib/contact";
 import { useSpatialHover } from "../../hooks/useSpatialHover";
 
-const WA_HREF =
-  "https://wa.me/5581987530744?text=Oi%2C%20Cristine!%20Quero%20pedir%20um%20or%C3%A7amento%20para%20um%20site%20profissional.";
+const WA_HREF = waLink(
+  "Oi, Cristine! Quero pedir um orçamento para um site profissional.",
+);
 
 export function CTA() {
   const ref = useRef<HTMLDivElement>(null);
@@ -56,7 +58,7 @@ export function CTA() {
               initial={{ opacity: 0, y: 16 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
               transition={{ duration: 0.7, delay: 0.15 }}
-              className="mt-6 text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl md:text-5xl max-w-3xl animate-fade-in"
+              className="mt-6 text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl md:text-5xl max-w-3xl"
             >
               Vamos construir uma{" "}
               <span className="text-gradient">presença digital</span> mais
@@ -80,7 +82,9 @@ export function CTA() {
                 <motion.div
                   key={badge}
                   initial={{ opacity: 0, y: 10 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                  animate={
+                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }
+                  }
                   transition={{ duration: 0.5, delay: 0.35 + i * 0.08 }}
                   className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] px-3 py-1.5 text-xs text-muted-foreground"
                 >
@@ -94,7 +98,11 @@ export function CTA() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.6, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              transition={{
+                duration: 0.6,
+                delay: 0.5,
+                ease: [0.16, 1, 0.3, 1],
+              }}
               className="mt-10"
             >
               <a

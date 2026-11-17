@@ -3,13 +3,11 @@ import { Menu, X, ArrowRight } from "lucide-react";
 import { waLink } from "@/lib/contact";
 
 const links = [
-  { href: "#inicio", label: "Início" },
-  { href: "#problema", label: "Problema" },
+  { href: "#portfolio", label: "Portfólio" },
   { href: "#servicos", label: "Serviços" },
-  { href: "#projetos", label: "Projetos" },
-  { href: "#modelos", label: "Modelos" },
   { href: "#metodo", label: "Método" },
   { href: "#sobre", label: "Sobre" },
+  { href: "#faq", label: "FAQ" },
   { href: "#contato", label: "Contato" },
 ];
 
@@ -41,8 +39,12 @@ export function Header() {
               CR
             </div>
             <div className="hidden sm:block">
-              <div className="text-sm font-semibold leading-none">Cristine Ribeiro</div>
-              <div className="text-xs text-muted-foreground">Desenvolvedora Web</div>
+              <div className="text-sm font-semibold leading-none">
+                Cristine Ribeiro
+              </div>
+              <div className="text-xs text-muted-foreground">
+                Desenvolvedora Web
+              </div>
             </div>
           </a>
 
@@ -71,7 +73,8 @@ export function Header() {
             <button
               onClick={() => setOpen((v) => !v)}
               className="lg:hidden rounded-lg p-2 text-foreground hover:bg-white/5"
-              aria-label="Menu"
+              aria-label={open ? "Fechar menu" : "Abrir menu"}
+              aria-expanded={open}
             >
               {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>

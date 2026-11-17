@@ -7,28 +7,24 @@ import { Footer } from "@/components/site/Footer";
 import { Header } from "@/components/site/Header";
 import { Hero } from "@/components/site/Hero";
 import { Method } from "@/components/site/Method";
-import { NicheShowcase } from "@/components/site/NicheShowcase";
+import { Portfolio } from "@/components/site/Portfolio";
 import { Problem } from "@/components/site/Problem";
-import { Projects } from "@/components/site/Projects";
 import { Services } from "@/components/site/Services";
-import { Storytelling } from "@/components/site/Storytelling";
 
 export default function App() {
   return (
-    <div className="min-h-screen overflow-x-hidden selection:bg-brand/30 selection:text-brand-foreground">
+    <div className="min-h-screen overflow-x-hidden selection:bg-brand/30 selection:text-white">
       <ExperienceLayer />
       <Header />
       <main>
         <Hero />
+        <Portfolio />
         <Problem />
-        <Storytelling />
         <BentoSolutions />
-        <NicheShowcase />
-        <Method />
         <Services />
-        <FAQ />
-        <Projects />
+        <Method />
         <About />
+        <FAQ />
         <CTA />
       </main>
       <Footer />

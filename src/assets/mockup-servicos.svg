@@ -1,0 +1,60 @@
+<svg width="1024" height="768" viewBox="0 0 1024 768" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1024" y2="768" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0D1420"/>
+      <stop offset="1" stop-color="#18263A"/>
+    </linearGradient>
+    <linearGradient id="hero" x1="140" y1="170" x2="700" y2="430" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1F385A"/>
+      <stop offset="1" stop-color="#14263E"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1024" height="768" fill="url(#bg)"/>
+
+  <rect x="56" y="44" width="912" height="680" rx="20" fill="#0B111B" stroke="#2B3B55"/>
+
+  <rect x="56" y="44" width="912" height="52" rx="20" fill="#0A0F18"/>
+  <circle cx="90" cy="70" r="6" fill="#415674"/>
+  <circle cx="110" cy="70" r="6" fill="#415674"/>
+  <circle cx="130" cy="70" r="6" fill="#415674"/>
+  <rect x="280" y="60" width="470" height="20" rx="10" fill="#111C2D"/>
+  <text x="515" y="74" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#8EA3C2">servicotech24h.com.br</text>
+
+  <text x="96" y="128" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#9FB4D3">Início</text>
+  <text x="158" y="128" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#9FB4D3">Serviços</text>
+  <text x="237" y="128" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#9FB4D3">Avaliações</text>
+  <text x="334" y="128" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#9FB4D3">Contato</text>
+
+  <rect x="96" y="156" width="610" height="280" rx="18" fill="url(#hero)" stroke="#38547A"/>
+  <text x="132" y="220" font-family="Segoe UI, Arial, sans-serif" font-size="39" font-weight="700" fill="#ECF4FF">Soluções profissionais</text>
+  <text x="132" y="266" font-family="Segoe UI, Arial, sans-serif" font-size="39" font-weight="700" fill="#ECF4FF">para sua empresa</text>
+  <text x="132" y="312" font-family="Segoe UI, Arial, sans-serif" font-size="19" fill="#B4C5DC">Instalação, manutenção e suporte técnico com</text>
+  <text x="132" y="338" font-family="Segoe UI, Arial, sans-serif" font-size="19" fill="#B4C5DC">atendimento rápido e garantia de serviço.</text>
+  <rect x="132" y="362" width="238" height="44" rx="10" fill="#5BC0FF"/>
+  <text x="251" y="389" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700" fill="#0B1A2D">Solicitar orçamento</text>
+
+  <rect x="728" y="156" width="200" height="82" rx="12" fill="#111D2D" stroke="#38547A"/>
+  <text x="748" y="188" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#9FB4D3">Clientes atendidos</text>
+  <text x="748" y="219" font-family="Segoe UI, Arial, sans-serif" font-size="25" font-weight="700" fill="#ECF4FF">+420</text>
+
+  <rect x="728" y="248" width="200" height="82" rx="12" fill="#111D2D" stroke="#38547A"/>
+  <text x="748" y="280" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#9FB4D3">Avaliação média</text>
+  <text x="748" y="311" font-family="Segoe UI, Arial, sans-serif" font-size="25" font-weight="700" fill="#ECF4FF">4,8</text>
+
+  <rect x="728" y="340" width="200" height="82" rx="12" fill="#111D2D" stroke="#38547A"/>
+  <text x="748" y="372" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#9FB4D3">Resposta média</text>
+  <text x="748" y="403" font-family="Segoe UI, Arial, sans-serif" font-size="25" font-weight="700" fill="#ECF4FF">15 min</text>
+
+  <rect x="96" y="458" width="400" height="84" rx="12" fill="#101A2A" stroke="#334A68"/>
+  <text x="120" y="490" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="600" fill="#ECF4FF">Instalação e manutenção elétrica</text>
+  <text x="120" y="516" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#AFC0D8">Atendimento residencial e comercial</text>
+
+  <rect x="512" y="458" width="416" height="84" rx="12" fill="#101A2A" stroke="#334A68"/>
+  <text x="536" y="490" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="600" fill="#ECF4FF">Equipe técnica certificada e garantia</text>
+  <text x="536" y="516" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#AFC0D8">Suporte rápido para empresas e comércios locais</text>
+
+  <rect x="96" y="558" width="832" height="116" rx="14" fill="#0E1725" stroke="#314763"/>
+  <text x="124" y="596" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#9FB4D3">Depoimento de cliente</text>
+  <text x="124" y="626" font-family="Segoe UI, Arial, sans-serif" font-size="17" fill="#ECF4FF">"Atenderam no mesmo dia, explicaram tudo com clareza e resolveram o problema da loja."</text>
+</svg>

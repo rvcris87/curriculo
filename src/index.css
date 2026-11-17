@@ -81,7 +81,11 @@
   --brand: oklch(0.86 0.18 165);
   --brand-2: oklch(0.72 0.16 235);
   --brand-3: oklch(0.7 0.2 295);
-  --gradient-hero: linear-gradient(180deg, oklch(0.12 0.005 250) 0%, oklch(0.10 0.005 250) 100%);
+  --gradient-hero: linear-gradient(
+    180deg,
+    oklch(0.12 0.005 250) 0%,
+    oklch(0.1 0.005 250) 100%
+  );
   --gradient-text: linear-gradient(
     100deg,
     var(--brand) 0%,
@@ -200,7 +204,11 @@
   }
 
   .aurora-field {
-    background: linear-gradient(180deg, oklch(0.12 0.005 250) 0%, oklch(0.10 0.005 250) 100%);
+    background: linear-gradient(
+      180deg,
+      oklch(0.12 0.005 250) 0%,
+      oklch(0.1 0.005 250) 100%
+    );
     opacity: 1;
   }
 
@@ -658,13 +666,6 @@
   /* Fluid section transitions */
   main > section {
     position: relative;
-    padding-top: clamp(1.75rem, 3.5vw, 2.5rem) !important;
-    padding-bottom: clamp(1.75rem, 3.5vw, 2.5rem) !important;
-  }
-
-  main > section:first-child {
-    padding-top: clamp(2.75rem, 4.5vw, 4rem) !important;
-    padding-bottom: clamp(1.75rem, 3.5vw, 2.5rem) !important;
   }
 
   main > section::after {
@@ -682,10 +683,6 @@
     display: none;
   }
 
-  main > section:nth-child(2) {
-    margin-top: 0;
-    padding-top: clamp(2.75rem, 4.5vw, 4rem) !important;
-  }
 
   main > section:nth-child(2)::before {
     display: none;
@@ -1001,7 +998,9 @@
       oklch(1 0 0 / 0%) 50%,
       oklch(1 0 0 / 4%) 100%
     );
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     z-index: 2;
@@ -1011,14 +1010,18 @@
   .spatial-card:hover {
     border-color: oklch(1 0 0 / 10%);
     background: color-mix(in oklab, var(--surface) 48%, transparent);
-    box-shadow: 
+    box-shadow:
       0 30px 70px -30px oklch(0 0 0 / 80%),
       0 0 30px 0 oklch(0.86 0.18 165 / 4%);
   }
 
   /* CTA button shimmer sweep */
   @keyframes cta-shimmer {
-    0%   { transform: translateX(-100%); }
-    100% { transform: translateX(200%); }
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(200%);
+    }
   }
 }

@@ -6,36 +6,36 @@ import { useSpatialHover } from "../../hooks/useSpatialHover";
 const services = [
   {
     name: "Site Essencial",
-    tagline: "Para comecar com presenca profissional.",
+    tagline: "Para começar com presença profissional.",
     items: [
-      "Pagina unica",
-      "Apresentacao da empresa",
-      "Servicos organizados",
-      "Localizacao",
-      "Botao para WhatsApp",
+      "Página única",
+      "Apresentação da empresa",
+      "Serviços organizados",
+      "Localização",
+      "Botão para WhatsApp",
     ],
     highlighted: false,
   },
   {
     name: "Site Profissional",
-    tagline: "Pagina completa e estrategica para conversao.",
+    tagline: "Página completa e estratégica para conversão.",
     items: [
       "Copy comercial",
       "Galeria de fotos",
       "Depoimentos",
       "Perguntas frequentes",
-      "Estrutura focada em conversao",
+      "Estrutura focada em conversão",
     ],
     highlighted: true,
   },
   {
     name: "Sistema Personalizado",
-    tagline: "Funcionalidades alem de uma pagina simples.",
+    tagline: "Funcionalidades além de uma página simples.",
     items: [
       "Login e painel administrativo",
       "Cadastro de clientes ou produtos",
       "Banco de dados",
-      "Formularios e upload",
+      "Formulários e upload",
       "Dashboards",
     ],
     highlighted: false,
@@ -49,18 +49,22 @@ export function Services() {
     <section id="servicos" className="relative py-14 md:py-18">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeader
-          eyebrow="Servicos"
+          eyebrow="Serviços"
           title={
             <>
-              Como posso <span className="text-gradient">ajudar seu negocio</span>
+              Como posso{" "}
+              <span className="text-gradient">ajudar seu negócio</span>
             </>
           }
-          description="Tres formatos para comecar - escolha o que faz mais sentido para a sua fase atual."
+          description="Três formatos para começar — escolha o que faz mais sentido para a sua fase atual."
         />
 
         <div className="mt-12 grid gap-5 lg:grid-cols-3">
           {services.map((s) => (
-            <div key={s.name} className="relative overflow-visible pt-7 md:pt-5">
+            <div
+              key={s.name}
+              className="relative overflow-visible pt-7 md:pt-5"
+            >
               {s.highlighted && (
                 <div className="absolute left-1/2 top-0 z-30 -translate-x-1/2 rounded-full bg-primary px-3.5 py-1 text-[10px] font-bold uppercase tracking-wider text-primary-foreground shadow-lg shadow-primary/30 md:left-7 md:translate-x-0">
                   Mais escolhido
@@ -69,11 +73,15 @@ export function Services() {
               <div
                 {...(s.highlighted ? spatialHover : {})}
                 className={`spatial-card h-full px-7 pb-7 pt-8 transition-all duration-300 ${
-                  s.highlighted ? "border-brand/25 shadow-lg shadow-brand/8 ring-1 ring-brand/10" : ""
+                  s.highlighted
+                    ? "border-brand/25 shadow-lg shadow-brand/8 ring-1 ring-brand/10"
+                    : ""
                 }`}
               >
                 <h3 className="text-xl font-bold">{s.name}</h3>
-                <p className="mt-1.5 text-sm text-muted-foreground">{s.tagline}</p>
+                <p className="mt-1.5 text-sm text-muted-foreground">
+                  {s.tagline}
+                </p>
 
                 <ul className="mt-6 space-y-3">
                   {s.items.map((it) => (
@@ -87,7 +95,9 @@ export function Services() {
                 </ul>
 
                 <a
-                  href={waLink(`Olá, Cristine! Vi seu portfólio e tenho interesse no plano ${s.name}.`)}
+                  href={waLink(
+                    `Olá, Cristine! Vi seu portfólio e tenho interesse no plano ${s.name}.`,
+                  )}
                   target="_blank"
                   rel="noreferrer"
                   className={`mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold transition ${

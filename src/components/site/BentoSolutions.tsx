@@ -10,11 +10,13 @@ import {
   LayoutList,
   ArrowRight,
 } from "lucide-react";
+import { waLink } from "@/lib/contact";
 import { SectionHeader } from "./SectionHeader";
 import { useSpatialHover } from "../../hooks/useSpatialHover";
 
-const WA_HREF =
-  "https://wa.me/5581987530744?text=Oi%2C%20Cristine!%20Quero%20um%20site%20profissional%20para%20meu%20neg%C3%B3cio.";
+const WA_HREF = waLink(
+  "Oi, Cristine! Quero um site profissional para meu negócio.",
+);
 
 interface BentoCard {
   icon: React.ElementType;
@@ -115,18 +117,12 @@ export function BentoSolutions() {
           />
         </motion.div>
 
-        <div
-          className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-auto"
-        >
+        <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-auto">
           {cards.map((card, i) => (
             <motion.div
               key={card.title}
               initial={{ opacity: 0, y: 28 }}
-              animate={
-                isInView
-                  ? { opacity: 1, y: 0 }
-                  : { opacity: 0, y: 28 }
-              }
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
               transition={{
                 duration: 0.6,
                 delay: i * 0.08,
@@ -152,9 +148,7 @@ export function BentoSolutions() {
                 </p>
 
                 {/* Inline visual (if exists) */}
-                {card.visual && (
-                  <div className="mt-4">{card.visual}</div>
-                )}
+                {card.visual && <div className="mt-4">{card.visual}</div>}
               </div>
             </motion.div>
           ))}
@@ -163,9 +157,7 @@ export function BentoSolutions() {
         {/* Bottom CTA */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
-          animate={
-            isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }
-          }
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
           transition={{ duration: 0.6, delay: 0.65 }}
           className="mt-10 flex justify-center"
         >
@@ -191,7 +183,7 @@ export function BentoSolutions() {
         >
           <div className="h-16 w-px bg-gradient-to-b from-brand/0 via-brand/30 to-brand/0 mb-6" />
           <p className="text-sm font-medium text-brand uppercase tracking-widest max-w-sm mx-auto">
-            Veja na prática
+            Escolha o formato ideal
           </p>
         </motion.div>
       </div>
@@ -208,15 +200,21 @@ function TrustVisual() {
       <div className="grid grid-cols-3 gap-3">
         <div className="rounded-xl bg-white/[0.04] border border-white/[0.06] p-3 text-center">
           <div className="text-xl font-bold text-gradient">94%</div>
-          <div className="text-[10px] text-muted-foreground mt-0.5">julgam pela aparência</div>
+          <div className="text-[10px] text-muted-foreground mt-0.5">
+            julgam pela aparência
+          </div>
         </div>
         <div className="rounded-xl bg-white/[0.04] border border-white/[0.06] p-3 text-center">
           <div className="text-xl font-bold text-gradient">3s</div>
-          <div className="text-[10px] text-muted-foreground mt-0.5">para decidir ficar</div>
+          <div className="text-[10px] text-muted-foreground mt-0.5">
+            para decidir ficar
+          </div>
         </div>
         <div className="rounded-xl bg-white/[0.04] border border-white/[0.06] p-3 text-center">
           <div className="text-xl font-bold text-gradient">75%</div>
-          <div className="text-[10px] text-muted-foreground mt-0.5">pesquisam online antes</div>
+          <div className="text-[10px] text-muted-foreground mt-0.5">
+            pesquisam online antes
+          </div>
         </div>
       </div>
 

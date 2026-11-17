@@ -14,15 +14,17 @@ import {
   Scissors,
   Calendar,
 } from "lucide-react";
+import { waLink } from "@/lib/contact";
 
-const WA_HREF =
-  "https://wa.me/5581987530744?text=Oi%2C%20Cristine!%20Quero%20um%20site%20profissional%20para%20meu%20neg%C3%B3cio.";
+const WA_HREF = waLink(
+  "Oi, Cristine! Quero um site profissional para meu negócio.",
+);
 
 export function Hero() {
   return (
     <section
       id="inicio"
-      className="hero-scene relative overflow-hidden pt-24 pb-0 md:pt-32"
+      className="hero-scene relative overflow-hidden pt-28 pb-0 md:pt-36"
     >
       {/* ── Neutral premium dark background ── */}
       <div className="aurora-field absolute inset-0 pointer-events-none" />
@@ -36,7 +38,6 @@ export function Hero() {
       {/* ── Content Grid ── */}
       <div className="relative z-10 mx-auto max-w-7xl px-4">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-8 items-center pb-12 md:pb-16">
-
           {/* ── Copy column ── */}
           <div className="lg:col-span-6">
             {/* Status indicator */}
@@ -55,10 +56,11 @@ export function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.06 }}
-              className="text-4xl font-bold leading-[1.15] sm:text-5xl md:text-6xl lg:text-[3.5rem] xl:text-[3.8rem]"
+              className="text-4xl font-bold leading-[1.12] sm:text-5xl lg:text-[3.25rem] xl:text-[3.6rem]"
             >
               Transformo negócios locais em{" "}
-              <span className="text-gradient">marcas profissionais</span> no digital
+              <span className="text-gradient">marcas profissionais</span> no
+              digital
             </motion.h1>
 
             {/* Subheadline */}
@@ -92,10 +94,10 @@ export function Hero() {
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </a>
               <a
-                href="#modelos"
+                href="#portfolio"
                 className="inline-flex items-center gap-2 rounded-xl glass px-6 py-3.5 text-sm font-semibold text-foreground transition hover:bg-white/10"
               >
-                Ver modelos por nicho
+                Ver portfólio
               </a>
             </motion.div>
 
@@ -108,7 +110,10 @@ export function Hero() {
             >
               {[
                 { icon: Smartphone, label: "Foco em Celular" },
-                { icon: MessageCircle, label: "Botões de WhatsApp Estratégicos" },
+                {
+                  icon: MessageCircle,
+                  label: "Botões de WhatsApp Estratégicos",
+                },
                 { icon: Sparkles, label: "Visual Limpo e Premium" },
                 { icon: CheckCircle2, label: "Sem Mensalidades" },
               ].map(({ icon: Icon, label }) => (
@@ -152,7 +157,6 @@ function HeroVisual() {
 
       {/* Browser shell container */}
       <div className="relative rounded-xl border border-white/[0.08] bg-[#0c0d0f] shadow-2xl overflow-hidden">
-        
         {/* Browser header strip */}
         <div className="flex items-center gap-2 border-b border-white/[0.05] bg-white/[0.02] px-4 py-3">
           <div className="flex gap-1.5">
@@ -173,12 +177,13 @@ function HeroVisual() {
 
         {/* Realistic Mini Landing Page Content */}
         <div className="p-4 space-y-4">
-          
           {/* Site Menu Bar */}
           <div className="flex items-center justify-between border-b border-white/[0.04] pb-2">
             <div className="flex items-center gap-1.5">
               <Scissors className="h-4.5 w-4.5 text-amber-500" />
-              <span className="text-[10px] font-bold tracking-wider text-white">BLANCK</span>
+              <span className="text-[10px] font-bold tracking-wider text-white">
+                BLANCK
+              </span>
             </div>
             <div className="flex gap-3 text-[9px] text-white/50 font-medium">
               <span>Início</span>
@@ -202,7 +207,7 @@ function HeroVisual() {
               <p className="text-[9px] text-white/50">
                 Agende seu horário com os melhores profissionais da região.
               </p>
-              
+
               {/* WhatsApp Action Button */}
               <div className="inline-flex items-center gap-1.5 rounded-md bg-[#25D366] hover:bg-[#25D366]/90 px-3 py-1.5 text-[9px] font-bold text-white shadow-md">
                 <MessageCircle className="h-3 w-3 fill-white text-[#25D366]" />
@@ -214,22 +219,47 @@ function HeroVisual() {
           {/* Mock Services Section */}
           <div className="space-y-2">
             <div className="flex justify-between items-center">
-              <span className="text-[10px] font-bold text-white uppercase tracking-wider">Principais Serviços</span>
+              <span className="text-[10px] font-bold text-white uppercase tracking-wider">
+                Principais Serviços
+              </span>
               <span className="text-[8px] text-amber-400">ver todos</span>
             </div>
             <div className="grid grid-cols-2 gap-2">
               {[
-                { name: "Corte Moderno", price: "R$ 45", desc: "Degradê, social ou clássico" },
-                { name: "Barba & Toalha Quente", price: "R$ 35", desc: "Alinhamento com navalha" },
-                { name: "Combo Premium", price: "R$ 70", desc: "Corte + barba + hidratação" },
-                { name: "Design de Sobrancelha", price: "R$ 20", desc: "Limpeza detalhada" },
+                {
+                  name: "Corte Moderno",
+                  price: "R$ 45",
+                  desc: "Degradê, social ou clássico",
+                },
+                {
+                  name: "Barba & Toalha Quente",
+                  price: "R$ 35",
+                  desc: "Alinhamento com navalha",
+                },
+                {
+                  name: "Combo Premium",
+                  price: "R$ 70",
+                  desc: "Corte + barba + hidratação",
+                },
+                {
+                  name: "Design de Sobrancelha",
+                  price: "R$ 20",
+                  desc: "Limpeza detalhada",
+                },
               ].map((s) => (
-                <div key={s.name} className="rounded border border-white/[0.04] bg-white/[0.01] p-2.5 space-y-1">
+                <div
+                  key={s.name}
+                  className="rounded border border-white/[0.04] bg-white/[0.01] p-2.5 space-y-1"
+                >
                   <div className="flex justify-between items-center text-[9px]">
-                    <span className="font-semibold text-white/80">{s.name}</span>
+                    <span className="font-semibold text-white/80">
+                      {s.name}
+                    </span>
                     <span className="text-amber-400 font-bold">{s.price}</span>
                   </div>
-                  <p className="text-[8px] text-white/40 leading-normal">{s.desc}</p>
+                  <p className="text-[8px] text-white/40 leading-normal">
+                    {s.desc}
+                  </p>
                 </div>
               ))}
             </div>
@@ -254,7 +284,9 @@ function HeroVisual() {
             <div className="flex items-center gap-1.5 text-white/60">
               <Star className="h-3.5 w-3.5 text-amber-500 shrink-0 fill-amber-500/20" />
               <div>
-                <div className="font-semibold text-white/80">Avaliação Google</div>
+                <div className="font-semibold text-white/80">
+                  Avaliação Google
+                </div>
                 <div className="text-white/40 flex items-center gap-0.5">
                   <span className="font-bold text-white/80">4.9</span>
                   <span>(180+ reviews)</span>
@@ -262,7 +294,6 @@ function HeroVisual() {
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>

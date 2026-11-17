@@ -103,9 +103,7 @@ export function Problem() {
           />
         </motion.div>
 
-        <div
-          className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-auto"
-        >
+        <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-auto">
           {cards.map((card, i) => (
             <motion.div
               key={card.title}
@@ -144,9 +142,7 @@ export function Problem() {
                 </p>
 
                 {/* Inline visual */}
-                {card.visual && (
-                  <div className="mt-4">{card.visual}</div>
-                )}
+                {card.visual && <div className="mt-4">{card.visual}</div>}
               </div>
             </motion.div>
           ))}
@@ -189,15 +185,21 @@ function InstagramVsWebsite() {
         </div>
         <div className="flex items-center gap-1 mt-1">
           <div className="h-1 w-1 rounded-full bg-destructive/40" />
-          <span className="text-[9px] text-muted-foreground/50">Serviços espalhados</span>
+          <span className="text-[9px] text-muted-foreground/50">
+            Serviços espalhados
+          </span>
         </div>
         <div className="flex items-center gap-1">
           <div className="h-1 w-1 rounded-full bg-destructive/40" />
-          <span className="text-[9px] text-muted-foreground/50">Difícil achar informação</span>
+          <span className="text-[9px] text-muted-foreground/50">
+            Difícil achar informação
+          </span>
         </div>
         <div className="flex items-center gap-1">
           <div className="h-1 w-1 rounded-full bg-destructive/40" />
-          <span className="text-[9px] text-muted-foreground/50">Depende do algoritmo</span>
+          <span className="text-[9px] text-muted-foreground/50">
+            Depende do algoritmo
+          </span>
         </div>
       </div>
 
@@ -228,7 +230,9 @@ function InstagramVsWebsite() {
           </div>
           <div className="flex items-center gap-1">
             <div className="h-1 w-1 rounded-full bg-brand/50" />
-            <span className="text-[9px] text-brand/60">Seu domínio próprio</span>
+            <span className="text-[9px] text-brand/60">
+              Seu domínio próprio
+            </span>
           </div>
         </div>
       </div>
@@ -240,7 +244,9 @@ function TrustMeter() {
   return (
     <div className="space-y-2">
       <div className="flex items-center justify-between">
-        <span className="text-[10px] text-muted-foreground">Confiança do cliente</span>
+        <span className="text-[10px] text-muted-foreground">
+          Confiança do cliente
+        </span>
         <span className="text-[10px] font-semibold text-brand/80">Alto</span>
       </div>
       <div className="h-2 w-full rounded-full bg-white/[0.06] overflow-hidden">
@@ -267,13 +273,17 @@ function WhatsAppFlow() {
     <div className="flex items-center gap-2">
       {/* Site */}
       <div className="flex-1 rounded-lg bg-white/[0.04] border border-white/[0.06] px-2 py-1.5 text-center">
-        <div className="text-[9px] text-muted-foreground/60">Visitou o site</div>
+        <div className="text-[9px] text-muted-foreground/60">
+          Visitou o site
+        </div>
       </div>
       {/* Arrow */}
       <div className="text-brand/40 text-xs">→</div>
       {/* CTA */}
       <div className="flex-1 rounded-lg bg-[#25D366]/10 border border-[#25D366]/20 px-2 py-1.5 text-center">
-        <div className="text-[9px] text-[#25D366]/80 font-medium">Clicou no botão</div>
+        <div className="text-[9px] text-[#25D366]/80 font-medium">
+          Clicou no botão
+        </div>
       </div>
       {/* Arrow */}
       <div className="text-brand/40 text-xs">→</div>
@@ -308,7 +318,9 @@ function MobileFirst() {
       {/* Stat */}
       <div className="flex-shrink-0 text-center">
         <div className="text-2xl font-bold text-gradient">85%</div>
-        <div className="text-[10px] text-muted-foreground mt-0.5">acessam pelo celular</div>
+        <div className="text-[10px] text-muted-foreground mt-0.5">
+          acessam pelo celular
+        </div>
       </div>
       {/* Divider */}
       <div className="h-10 w-px bg-white/[0.08] flex-shrink-0" />

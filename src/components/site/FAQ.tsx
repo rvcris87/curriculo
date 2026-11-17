@@ -1,6 +1,7 @@
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Plus, Minus, MessageCircle } from "lucide-react";
+import { waLink } from "@/lib/contact";
 import { SectionHeader } from "./SectionHeader";
 
 const faqs = [
@@ -76,14 +77,18 @@ export function FAQ() {
               <motion.div
                 key={faq.q}
                 initial={{ opacity: 0, y: 16 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+                animate={
+                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }
+                }
                 transition={{
                   duration: 0.5,
                   delay: i * 0.08,
                   ease: [0.16, 1, 0.3, 1],
                 }}
                 className={`overflow-hidden rounded-2xl glass transition-all duration-300 hover:bg-white/[0.04] ${
-                  isOpen ? "border border-brand/30 bg-white/[0.03]" : "border border-white/[0.08]"
+                  isOpen
+                    ? "border border-brand/30 bg-white/[0.03]"
+                    : "border border-white/[0.08]"
                 }`}
               >
                 <button
@@ -91,7 +96,9 @@ export function FAQ() {
                   className="flex w-full items-center justify-between gap-4 p-5 text-left md:p-6"
                   aria-expanded={isOpen}
                 >
-                  <span className={`text-base font-semibold leading-snug md:text-lg transition-colors duration-300 ${isOpen ? "text-foreground" : "text-muted-foreground"}`}>
+                  <span
+                    className={`text-base font-semibold leading-snug md:text-lg transition-colors duration-300 ${isOpen ? "text-foreground" : "text-muted-foreground"}`}
+                  >
                     {faq.q}
                   </span>
                   <div
@@ -101,7 +108,11 @@ export function FAQ() {
                         : "bg-white/[0.08] text-muted-foreground group-hover:bg-white/[0.12]"
                     }`}
                   >
-                    {isOpen ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
+                    {isOpen ? (
+                      <Minus className="h-4 w-4" />
+                    ) : (
+                      <Plus className="h-4 w-4" />
+                    )}
                   </div>
                 </button>
                 <AnimatePresence>
@@ -134,7 +145,9 @@ export function FAQ() {
             Ainda ficou alguma dúvida?
           </p>
           <a
-            href="https://wa.me/5581987530744?text=Oi%2C%20Cristine!%20Tenho%20uma%20d%C3%BAvida%20sobre%20cria%C3%A7%C3%A3o%20de%20site."
+            href={waLink(
+              "Oi, Cristine! Tenho uma dúvida sobre criação de site.",
+            )}
             target="_blank"
             rel="noreferrer"
             className="group/btn inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-8 py-3 text-sm font-semibold text-white shadow-[0_0_20px_rgba(37,211,102,0.2)] transition hover:opacity-90 hover:shadow-[0_0_30px_rgba(37,211,102,0.4)] glow"

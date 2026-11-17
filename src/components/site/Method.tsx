@@ -1,7 +1,14 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { SectionHeader } from "./SectionHeader";
-import { MessageCircle, Search, Layers, PenTool, CheckCircle } from "lucide-react";
+import {
+  MessageCircle,
+  Search,
+  Layers,
+  PenTool,
+  CheckCircle,
+} from "lucide-react";
+import { waLink } from "@/lib/contact";
 
 const steps = [
   {
@@ -103,10 +110,12 @@ export function Method() {
               <p className="text-sm text-muted-foreground leading-relaxed flex-grow">
                 {step.desc}
               </p>
-              
+
               {/* Subtle line indicator */}
               <div className="h-0.5 w-full bg-white/[0.05] mt-6 rounded-full overflow-hidden">
-                <div className={`h-full w-0 group-hover:w-full bg-gradient-to-r ${step.color} transition-all duration-700 ease-out`} />
+                <div
+                  className={`h-full w-0 group-hover:w-full bg-gradient-to-r ${step.color} transition-all duration-700 ease-out`}
+                />
               </div>
             </motion.div>
           ))}
@@ -121,13 +130,15 @@ export function Method() {
         >
           {/* subtle background glow */}
           <div className="absolute inset-0 bg-brand/5 opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
-          
+
           <div className="relative z-10 flex flex-col items-center">
             <h4 className="text-lg font-semibold mb-6">
               Quer entender qual site faz mais sentido para o seu negócio?
             </h4>
             <a
-              href="https://wa.me/5581987530744?text=Oi%2C%20Cristine!%20Quero%20entender%20qual%20site%20faz%20mais%20sentido%20para%20meu%20neg%C3%B3cio."
+              href={waLink(
+                "Oi, Cristine! Quero entender qual site faz mais sentido para meu negócio.",
+              )}
               target="_blank"
               rel="noreferrer"
               className="group/btn inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-8 py-3 text-sm font-semibold text-white shadow-[0_0_20px_rgba(37,211,102,0.3)] transition hover:opacity-90 hover:shadow-[0_0_30px_rgba(37,211,102,0.5)] glow"

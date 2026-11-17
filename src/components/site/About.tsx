@@ -33,9 +33,9 @@ export function About() {
             />
             <div className="mt-6 space-y-4 text-base text-muted-foreground leading-relaxed">
               <p>
-                Sou Cristine Ribeiro, desenvolvedora web e estudante de Análise
-                e Desenvolvimento de Sistemas. Tenho foco na criação de sites e
-                sistemas funcionais para negócios reais.
+                Sou Cristine Ribeiro, desenvolvedora web e criadora de produtos
+                digitais. Tenho foco na criação de sites e sistemas funcionais
+                para negócios reais.
               </p>
               <p>
                 Meu trabalho une desenvolvimento, organização visual e
@@ -75,10 +75,9 @@ export function About() {
                 <h3 className="text-lg font-semibold">Formação</h3>
               </div>
               <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                Curso Análise e Desenvolvimento de Sistemas e sigo desenvolvendo
-                projetos práticos para evoluir minhas habilidades em
-                desenvolvimento web, banco de dados, design e experiência do
-                usuário.
+                Base em Análise e Desenvolvimento de Sistemas e estudo contínuo
+                em tecnologia, aplicado em projetos práticos de desenvolvimento
+                web, banco de dados, design e experiência do usuário.
               </p>
             </div>
 

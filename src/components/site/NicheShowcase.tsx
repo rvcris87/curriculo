@@ -1,13 +1,6 @@
-﻿import { ArrowRight, MessageCircle } from "lucide-react";
+import { ArrowRight, MessageCircle } from "lucide-react";
 import { SectionHeader } from "./SectionHeader";
 import { waLink } from "@/lib/contact";
-
-import barberMockup from "@/assets/mockup-barbearia.jpg";
-import clinicMockup from "@/assets/mockup-clinica.jpg";
-import restaurantMockup from "@/assets/mockup-restaurante.jpg";
-import storeMockup from "@/assets/mockup-loja.jpg";
-import serviceMockup from "@/assets/mockup-servicos.jpg";
-import portfolioMockup from "@/assets/mockup-academia.jpg";
 
 interface NicheModel {
   id: string;
@@ -15,50 +8,67 @@ interface NicheModel {
   description: string;
   tags: string[];
   whatsappMessage: string;
-  mockup: string;
-  domain: string;
-  style: "dark" | "light";
-  previewLabel: string;
+  mockupLabels: string[];
 }
 
-function PreviewFrame({
-  mockup,
-  domain,
-  style,
-  previewLabel,
-}: {
-  mockup: string;
-  domain: string;
-  style: "dark" | "light";
-  previewLabel: string;
-}) {
-  const dark = style === "dark";
-
+function MockupPlaceholder({ labels }: { labels: string[] }) {
   return (
-    <div className="overflow-hidden rounded-xl border border-white/[0.1] bg-black/40 shadow-[0_18px_42px_rgba(0,0,0,0.5)]">
-      <div
-        className={`flex items-center gap-1.5 border-b px-3 py-2 ${
-          dark ? "border-white/[0.1] bg-black/45" : "border-neutral-200 bg-white"
-        }`}
-      >
-        <span className={`h-1.5 w-1.5 rounded-full ${dark ? "bg-white/35" : "bg-neutral-300"}`} />
-        <span className={`h-1.5 w-1.5 rounded-full ${dark ? "bg-white/35" : "bg-neutral-300"}`} />
-        <span className={`h-1.5 w-1.5 rounded-full ${dark ? "bg-white/35" : "bg-neutral-300"}`} />
-        <div
-          className={`mx-auto h-4 w-[64%] rounded px-2 text-center text-[7px] ${
-            dark ? "bg-white/[0.07] text-white/50" : "bg-neutral-100 text-neutral-500"
-          }`}
-        >
-          {domain}
-        </div>
+    <div className="aspect-[16/10] overflow-hidden rounded-2xl border border-white/[0.1] bg-gradient-to-br from-white/[0.08] via-white/[0.03] to-transparent p-3">
+      <div className="mb-3 flex items-center gap-1.5">
+        <span className="h-1.5 w-1.5 rounded-full bg-white/35" />
+        <span className="h-1.5 w-1.5 rounded-full bg-white/35" />
+        <span className="h-1.5 w-1.5 rounded-full bg-white/35" />
+        <div className="ml-auto h-4 w-20 rounded bg-white/[0.08]" />
       </div>
+      <div className="mb-3 h-10 rounded-lg bg-white/[0.08]" />
+      <div className="grid grid-cols-3 gap-2">
+        <div className="h-12 rounded-md bg-white/[0.07]" />
+        <div className="h-12 rounded-md bg-white/[0.06]" />
+        <div className="h-12 rounded-md bg-white/[0.05]" />
+      </div>
+      <div className="mt-3 flex flex-wrap gap-1.5">
+        {labels.map((label) => (
+          <span
+            key={label}
+            className="rounded-full border border-white/[0.16] bg-white/[0.06] px-2 py-0.5 text-[10px] text-white/80"
+          >
+            {label}
+          </span>
+        ))}
+      </div>
+      <div className="mt-3 h-6 w-24 rounded-md bg-white/[0.14]" />
+    </div>
+  );
+}
 
-      <div className="relative aspect-[16/10] overflow-hidden">
-        <img src={mockup} alt={previewLabel} className="h-full w-full object-cover object-top" loading="lazy" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-        <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between gap-2">
-          <span className="rounded bg-black/65 px-2 py-1 text-[9px] font-medium text-white">Preview real do modelo</span>
-          <span className="rounded bg-white px-2 py-1 text-[9px] font-semibold text-black">Landing page</span>
+function BarberMockup() {
+  return (
+    <div className="aspect-[16/10] w-full overflow-hidden rounded-2xl border border-[#c29a67]/30 bg-gradient-to-br from-[#19130e] via-[#110f0d] to-[#0b0b0b] p-3">
+      <div className="h-full rounded-xl border border-[#c29a67]/20 bg-black/20 p-3">
+        <div className="mb-2 flex items-center">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#c49a67]" />
+          <span className="ml-1 h-1.5 w-1.5 rounded-full bg-[#a67d50]" />
+          <span className="ml-1 h-1.5 w-1.5 rounded-full bg-[#886542]" />
+          <div className="ml-auto flex gap-1.5">
+            <span className="h-1 w-5 rounded bg-[#d8ba90]/50" />
+            <span className="h-1 w-5 rounded bg-[#d8ba90]/35" />
+            <span className="h-1 w-5 rounded bg-[#d8ba90]/25" />
+          </div>
+        </div>
+        <div className="h-14 rounded-lg bg-gradient-to-r from-[#2b1e14] to-[#15110f]" />
+        <div className="mt-2 flex items-center justify-between">
+          <div>
+            <div className="text-[9px] tracking-[0.12em] text-[#e2c496]">Barbearia Premium</div>
+            <div className="mt-1 h-1 w-16 rounded bg-[#d4b486]/35" />
+          </div>
+          <div className="rounded-md border border-[#c29a67]/35 bg-[#c69a66] px-2 py-0.5 text-[8px] font-semibold text-[#24170f]">
+            Preview
+          </div>
+        </div>
+        <div className="mt-2 grid grid-cols-3 gap-1.5">
+          <div className="h-7 rounded-md bg-[#241a14]" />
+          <div className="h-7 rounded-md bg-[#1f1712]" />
+          <div className="h-7 rounded-md bg-[#1a1411]" />
         </div>
       </div>
     </div>
@@ -69,57 +79,43 @@ const models: NicheModel[] = [
   {
     id: "barbearia",
     title: "Barbearia Premium",
-    description: "Visual forte com chamada principal, servicos e CTA para agenda.",
-    tags: ["Fundo escuro", "Agendar horario", "Avaliacao"],
-    whatsappMessage: "Olá, Cristine! Tenho interesse em um site modelo Barbearia Premium.",
-    mockup: barberMockup,
-    domain: "barbeariapremium.com.br",
-    style: "dark",
-    previewLabel: "Preview do modelo de barbearia",
+    description:
+      "Modelo ideal para barbearias que querem transmitir autoridade, facilitar agendamentos e valorizar seus serviços.",
+    tags: ["Agendamento", "Serviços", "WhatsApp"],
+    whatsappMessage: "Olá, Cristine! Vi o modelo Barbearia Premium e tenho interesse em um site nesse estilo.",
+    mockupLabels: ["Agenda", "Serviços"],
   },
   {
     id: "clinica",
     title: "Clínica Estética",
-    description: "Composicao limpa e sofisticada com procedimentos e contato direto.",
+    description: "Composição limpa e sofisticada com procedimentos e contato direto.",
     tags: ["Sofisticado", "Procedimentos", "WhatsApp"],
     whatsappMessage: "Olá, Cristine! Tenho interesse em um site modelo Clínica Estética.",
-    mockup: clinicMockup,
-    domain: "clinicavitta.com.br",
-    style: "light",
-    previewLabel: "Preview do modelo de clinica estetica",
+    mockupLabels: ["Contato", "Agenda"],
   },
   {
     id: "restaurante-delivery",
     title: "Restaurante/Delivery",
-    description: "Prato e cardapio em destaque com CTA objetivo para pedido.",
-    tags: ["Cardapio", "Pedir agora", "Menu"],
+    description: "Prato e cardápio em destaque com CTA objetivo para pedido.",
+    tags: ["Cardápio", "Pedir agora", "Menu"],
     whatsappMessage: "Olá, Cristine! Tenho interesse em um site modelo Restaurante/Delivery.",
-    mockup: restaurantMockup,
-    domain: "sabordacasa.com.br",
-    style: "dark",
-    previewLabel: "Preview do modelo de restaurante",
+    mockupLabels: ["Menu", "Contato"],
   },
   {
     id: "loja-roupas",
     title: "Loja de Roupas",
-    description: "Vitrine de colecoes com foco em produtos e jornada visual.",
-    tags: ["Colecao", "Produtos", "Ver pecas"],
+    description: "Vitrine de coleções com foco em produtos e jornada visual.",
+    tags: ["Coleção", "Produtos", "Ver peças"],
     whatsappMessage: "Olá, Cristine! Tenho interesse em um site modelo Loja de Roupas.",
-    mockup: storeMockup,
-    domain: "ateliermoda.com.br",
-    style: "light",
-    previewLabel: "Preview do modelo de loja de roupas",
+    mockupLabels: ["Produtos", "Contato"],
   },
   {
     id: "prestador",
     title: "Prestador de Serviço",
-    description: "Estrutura profissional com servicos, confianca e orcamento rapido.",
-    tags: ["Servico", "Confianca", "Orcamento"],
+    description: "Estrutura profissional com serviços, confiança e orçamento rápido.",
+    tags: ["Serviços", "Confiança", "Orçamento"],
     whatsappMessage: "Olá, Cristine! Tenho interesse em um site modelo Prestador de Serviço.",
-    mockup: serviceMockup,
-    domain: "servicotech24h.com.br",
-    style: "dark",
-    previewLabel: "Preview do modelo de prestador de servico",
+    mockupLabels: ["Serviços", "Contato"],
   },
   {
     id: "portfolio",
@@ -127,41 +123,40 @@ const models: NicheModel[] = [
     description: "Hero pessoal e projetos para destacar autoridade e contato.",
     tags: ["Hero", "Projetos", "Entrar em contato"],
     whatsappMessage: "Olá, Cristine! Tenho interesse em um site modelo Portfólio Profissional.",
-    mockup: portfolioMockup,
-    domain: "portfoliopro.com.br",
-    style: "dark",
-    previewLabel: "Preview do modelo de portfolio profissional",
+    mockupLabels: ["Projetos", "Contato"],
   },
 ];
 
 export function NicheShowcase() {
   return (
-    <section id="modelos" className="relative border-t border-white/[0.05] py-14 md:py-16">
+    <section
+      id="modelos"
+      className="relative scroll-mt-[110px] border-t border-white/[0.05] pb-14 pt-20 md:pb-16 md:pt-24"
+    >
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeader
           eyebrow="Modelos"
           title="Modelos que transformam presença digital em resultado"
-          description="Escolha um estilo de site para o seu negócio e visualize como sua marca poderia aparecer online."
+          description="Escolha um estilo de site para visualizar como sua marca poderia aparecer online."
           align="center"
           animated={false}
         />
 
-        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {models.map((model) => (
             <article
               key={model.id}
-              className="group flex h-full min-h-[520px] flex-col overflow-hidden rounded-2xl border border-white/[0.12] bg-white/[0.02] p-4 transition duration-300 hover:-translate-y-0.5 hover:border-white/[0.25]"
+              className={`group flex h-full flex-col rounded-3xl border border-white/[0.12] bg-[#0d1016] p-4 shadow-[0_16px_36px_rgba(0,0,0,0.35)] transition duration-300 hover:-translate-y-1 hover:border-white/[0.24] ${
+                model.id === "barbearia" ? "min-h-[450px]" : "min-h-[490px]"
+              }`}
             >
-              <div className="min-h-[300px]">
-                <PreviewFrame
-                  mockup={model.mockup}
-                  domain={model.domain}
-                  style={model.style}
-                  previewLabel={model.previewLabel}
-                />
-              </div>
+              {model.id === "barbearia" ? (
+                <BarberMockup />
+              ) : (
+                <MockupPlaceholder labels={model.mockupLabels} />
+              )}
 
-              <div className="mt-4 border-t border-white/[0.08] pt-4">
+              <div className="mt-4 flex flex-1 flex-col border-t border-white/[0.08] pt-4">
                 <h3 className="text-lg font-semibold text-white">{model.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-white/68">{model.description}</p>
                 <div className="mt-3 flex flex-wrap gap-2">
@@ -174,16 +169,37 @@ export function NicheShowcase() {
                     </span>
                   ))}
                 </div>
-                <a
-                  href={waLink(model.whatsappMessage)}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-xs font-semibold text-primary-foreground transition hover:opacity-90"
-                >
-                  <MessageCircle className="h-3.5 w-3.5" />
-                  Quero um site assim
-                  <ArrowRight className="h-3.5 w-3.5" />
-                </a>
+                {model.id === "barbearia" ? (
+                  <div className="mt-auto grid grid-cols-1 gap-2 sm:grid-cols-2">
+                    <a
+                      href="/modelos/barbearia"
+                      className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/[0.18] bg-white/[0.03] px-4 py-2.5 text-xs font-semibold text-white transition hover:bg-white/[0.08]"
+                    >
+                      Ver modelo
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </a>
+                    <a
+                      href={waLink(model.whatsappMessage)}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-xs font-semibold text-primary-foreground transition hover:opacity-90"
+                    >
+                      <MessageCircle className="h-3.5 w-3.5" />
+                      Quero um site assim
+                    </a>
+                  </div>
+                ) : (
+                  <a
+                    href={waLink(model.whatsappMessage)}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-auto inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-xs font-semibold text-primary-foreground transition hover:opacity-90"
+                  >
+                    <MessageCircle className="h-3.5 w-3.5" />
+                    Quero um site assim
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </a>
+                )}
               </div>
             </article>
           ))}
