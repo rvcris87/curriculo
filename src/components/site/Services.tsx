@@ -19,6 +19,7 @@ const pacotes = [
       "Landing page de 1 página",
       "Serviços, localização e horários",
       "Botão de WhatsApp com mensagem pronta",
+      "Textos do site escritos por mim",
       "2 rodadas de ajustes",
     ],
     lancamento: { preco: "500", vagas: 3 },
@@ -37,6 +38,7 @@ const pacotes = [
       "1 recurso: agendamento, cardápio com pedido ou planos",
       "Galeria, depoimentos e perguntas frequentes",
       "Configuração para aparecer no Google",
+      "Textos do site escritos por mim",
       "2 rodadas de ajustes",
     ],
     lancamento: null,
@@ -62,9 +64,9 @@ const pacotes = [
 ];
 
 const extras = [
-  ["Página ou seção extra", "R$ 300"],
-  ["Agendamento ou carrinho de pedido", "R$ 400"],
-  ["Textos completos do site", "R$ 250"],
+  ["Página extra", "R$ 150"],
+  ["Seção extra", "R$ 80"],
+  ["Agendamento ou carrinho de pedido", "R$ 150"],
   ["Rodada de ajuste adicional", "R$ 80"],
 ];
 
