@@ -163,7 +163,7 @@ function Marquee() {
     "Sistemas sob medida",
     "WhatsApp integrado",
     "Feito para celular",
-    "Sem mensalidade",
+    "Preço claro",
   ];
   const row = [...items, ...items];
   return (

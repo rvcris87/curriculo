@@ -1,114 +1,100 @@
+import { Clock, KeyRound, MapPin, MessageCircle } from "lucide-react";
 import { SectionHeader } from "./SectionHeader";
-import { GraduationCap, Award, Code2 } from "lucide-react";
 
-const tech = [
-  "HTML",
-  "CSS",
-  "JavaScript",
-  "Python",
-  "Flask",
-  "Supabase",
-  "PostgreSQL",
-  "Git",
-  "GitHub",
-  "Figma",
-  "Canva",
-  "Chart.js",
+/** Quando tiver a foto, salve em /public/cristine.webp e troque FOTO para "/cristine.webp". */
+const FOTO: string | null = null;
+
+const motivos = [
+  {
+    icon: MessageCircle,
+    titulo: "Você fala direto comigo",
+    texto:
+      "Sem agência, sem atendente no meio. Quem conversa com você é quem faz o site.",
+  },
+  {
+    icon: MapPin,
+    titulo: "Conheço o comércio local",
+    texto:
+      "Moro em Recife e crio pensando em quem pesquisa e compra aqui na região.",
+  },
+  {
+    icon: KeyRound,
+    titulo: "O site é seu",
+    texto:
+      "Domínio e acessos ficam no seu nome. Você não fica preso a mim nem a uma plataforma.",
+  },
+  {
+    icon: Clock,
+    titulo: "Prazo por escrito",
+    texto:
+      "Entrega em até 10 dias depois do material, com etapas combinadas desde o início.",
+  },
 ];
 
 export function About() {
   return (
-    <section id="sobre" className="relative py-16 md:py-20">
-      <div className="mx-auto max-w-7xl px-4">
-        <div className="grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-7">
-            <SectionHeader
-              eyebrow="Sobre"
-              title={
-                <>
-                  Quem está por trás{" "}
-                  <span className="text-gradient">dos projetos</span>
-                </>
-              }
-            />
-            <div className="mt-6 space-y-4 text-base text-muted-foreground leading-relaxed">
-              <p>
-                Sou Cristine Ribeiro, desenvolvedora web e criadora de produtos
-                digitais. Tenho foco na criação de sites e sistemas funcionais
-                para negócios reais.
-              </p>
-              <p>
-                Meu trabalho une desenvolvimento, organização visual e
-                estratégia para transformar ideias em páginas claras, bonitas e
-                fáceis de usar. Tenho experiência prática com projetos usando
-                Python, Flask, Supabase, PostgreSQL, HTML, CSS e JavaScript.
-              </p>
-              <p>
-                Atualmente, meu foco é ajudar pequenos negócios a saírem do
-                improviso e terem uma presença digital mais profissional.
-              </p>
-            </div>
+    <section id="sobre" className="relative scroll-mt-24 py-20 md:py-28">
+      <div className="mx-auto grid max-w-7xl gap-12 px-4 lg:grid-cols-12 lg:items-center">
+        {/* Foto (ou espaço reservado) */}
+        <div className="lg:col-span-5">
+          <div className="relative mx-auto aspect-[4/5] max-w-md overflow-hidden rounded-[2rem] bg-brand">
+            {FOTO ? (
+              <img
+                src={FOTO}
+                alt="Cristine Ribeiro"
+                className="h-full w-full object-cover mix-blend-multiply grayscale"
+              />
+            ) : (
+              <div className="grid h-full w-full place-items-center">
+                <span className="select-none font-display text-[12rem] leading-none text-ink/90">
+                  CR
+                </span>
+              </div>
+            )}
+            <span className="absolute bottom-5 left-5 rounded-full bg-ink px-4 py-2 font-mono text-[11px] font-bold uppercase tracking-widest text-brand">
+              Recife · PE
+            </span>
+          </div>
+        </div>
 
-            <div className="mt-10">
-              <div className="text-xs uppercase tracking-wider text-muted-foreground">
-                Tecnologias
-              </div>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {tech.map((t) => (
-                  <span
-                    key={t}
-                    className="card-animated skill-pop glass rounded-lg px-3 py-1.5 text-xs font-medium transition hover:bg-white/10"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </div>
+        <div className="lg:col-span-7">
+          <SectionHeader
+            eyebrow="Sobre"
+            title={
+              <>
+                Oi, eu sou a <span className="text-brand">Cris</span>
+              </>
+            }
+          />
+          <div className="mt-6 max-w-xl space-y-4 text-lg leading-relaxed text-white/90">
+            <p>
+              Sou desenvolvedora web e crio sites e sistemas para pequenos
+              negócios que querem sair do improviso — e parar de perder cliente
+              por não ter onde mostrar o próprio trabalho.
+            </p>
+            <p>
+              Além de programar, cuido da estratégia: o que aparece primeiro, o
+              que o cliente precisa ler e onde ele clica para chamar você no
+              WhatsApp.
+            </p>
           </div>
 
-          <div className="lg:col-span-5 space-y-4">
-            <div className="card-animated reveal-3d glass-strong rounded-2xl p-6 border-gradient">
-              <div className="flex items-center gap-3">
-                <div className="grid h-10 w-10 place-items-center rounded-xl bg-brand/20 text-brand">
-                  <GraduationCap className="h-5 w-5" />
-                </div>
-                <h3 className="text-lg font-semibold">Formação</h3>
-              </div>
-              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                Base em Análise e Desenvolvimento de Sistemas e estudo contínuo
-                em tecnologia, aplicado em projetos práticos de desenvolvimento
-                web, banco de dados, design e experiência do usuário.
-              </p>
-            </div>
-
-            <div className="card-animated reveal-3d glass rounded-2xl p-6">
-              <div className="flex items-center gap-3">
-                <div className="grid h-10 w-10 place-items-center rounded-xl bg-brand-3/20 text-brand-3">
-                  <Award className="h-5 w-5" />
-                </div>
-                <h3 className="text-lg font-semibold">Certificados</h3>
-              </div>
-              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                Cursos e certificações em desenvolvimento web, lógica de
-                programação, banco de dados e design. Aprendizado contínuo
-                aplicado em cada projeto.
-              </p>
-            </div>
-
-            <div className="card-animated reveal-3d glass rounded-2xl p-6">
-              <div className="flex items-center gap-3">
-                <div className="grid h-10 w-10 place-items-center rounded-xl bg-brand-2/20 text-brand-2">
-                  <Code2 className="h-5 w-5" />
-                </div>
-                <h3 className="text-lg font-semibold">Trajetória</h3>
-              </div>
-              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                Do primeiro código até sistemas com banco de dados, dashboards e
-                sites publicados — sempre com foco em entregar valor real para
-                quem usa.
-              </p>
-            </div>
-          </div>
+          <ul className="mt-10 grid gap-4 sm:grid-cols-2">
+            {motivos.map(({ icon: Icon, titulo, texto }) => (
+              <li
+                key={titulo}
+                className="rounded-2xl bg-white/[0.07] p-5 ring-1 ring-white/15"
+              >
+                <Icon className="h-5 w-5 text-brand" />
+                <h3 className="mt-3 font-display text-2xl uppercase leading-none">
+                  {titulo}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {texto}
+                </p>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

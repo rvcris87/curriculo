@@ -1,161 +1,112 @@
-import { motion, AnimatePresence, useInView } from "framer-motion";
-import { useRef, useState } from "react";
-import { Plus, Minus, MessageCircle } from "lucide-react";
+import { useState } from "react";
+import { MessageCircle, Minus, Plus } from "lucide-react";
 import { waLink } from "@/lib/contact";
-import { SectionHeader } from "./SectionHeader";
 
 const faqs = [
   {
-    q: "Preciso já ter domínio e hospedagem?",
-    a: "Não necessariamente. Se você ainda não tiver, eu posso te orientar sobre as melhores opções para o seu momento. O importante é começar com uma estrutura simples, profissional e que possa evoluir.",
+    q: "Quanto custa um site?",
+    a: "A landing page (pacote Essencial) começa em R$ 1.200 e o site Profissional em R$ 2.200. Sistemas com login e painel começam em R$ 5.000. O valor final depende do que você precisa — e tudo fica por escrito na proposta antes de começar.",
   },
   {
-    q: "Você cria o texto do site também?",
-    a: "Sim. Eu organizo os textos de forma estratégica com base nas informações do seu negócio, seus serviços, diferenciais e objetivo principal. A ideia é deixar a comunicação clara, profissional e focada em gerar contato.",
+    q: "Em quanto tempo fica pronto?",
+    a: "A landing page fica pronta em até 7 dias e o site Profissional entre 10 e 14 dias. O prazo começa quando eu recebo a entrada e o seu material (logo, fotos, serviços).",
   },
   {
-    q: "O site funciona bem no celular?",
-    a: "Sim. O site é pensado para funcionar bem no computador e principalmente no celular, já que a maioria dos clientes acessa pelo smartphone.",
+    q: "Tem custo mensal?",
+    a: "O único custo obrigatório é o domínio .com.br, cerca de R$ 40 por ano, pago direto por você no Registro.br. A manutenção mensal (R$ 150) é opcional e inclui hospedagem, pequenos ajustes e atualizações.",
   },
   {
-    q: "Consigo colocar botão para WhatsApp?",
-    a: "Sim. O WhatsApp é uma das partes principais da estratégia. Os botões podem levar o cliente direto para uma conversa com mensagem pronta.",
+    q: "E se eu não gostar do resultado?",
+    a: "Todo pacote inclui 2 rodadas de ajustes. Antes de começar, a gente define referências e o estilo, para a primeira versão já chegar perto do que você imagina.",
   },
   {
-    q: "Posso ter galeria, cardápio, serviços ou localização?",
-    a: "Sim. Dependendo do tipo de negócio, o site pode ter galeria de fotos, lista de serviços, cardápio digital, localização, horários de atendimento, depoimentos e outras seções importantes.",
+    q: "Consigo mudar coisas no site depois?",
+    a: "Pequenas mudanças (preço, horário, foto) estão incluídas na manutenção mensal. Sem o plano, cada ajuste é cobrado à parte, com valor combinado antes.",
   },
   {
-    q: "Quanto tempo demora para ficar pronto?",
-    a: "O prazo depende do tamanho do projeto e da velocidade de envio das informações. Projetos mais simples costumam ser mais rápidos, enquanto páginas mais completas exigem mais etapas de revisão e ajustes.",
-  },
-  {
-    q: "Você faz manutenção depois?",
-    a: "Sim. Podemos combinar manutenção, ajustes pontuais ou melhorias futuras conforme a necessidade do seu negócio.",
-  },
-  {
-    q: "Como faço para pedir um orçamento?",
-    a: "É só me chamar no WhatsApp. Eu vou entender seu tipo de negócio, o que você precisa no site e indicar o melhor caminho para começar.",
+    q: "Como funciona o pagamento?",
+    a: "50% de entrada para começar e 50% na entrega, antes de o site ir para o ar. Aceito Pix ou cartão (o parcelamento tem o acréscimo da maquininha).",
   },
 ];
 
 export function FAQ() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-
-  const toggle = (i: number) => {
-    setOpenIndex(openIndex === i ? null : i);
-  };
+  const [aberta, setAberta] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="relative py-16 md:py-20" ref={ref}>
-      <div className="mx-auto max-w-3xl px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <SectionHeader
-            eyebrow="Dúvidas frequentes"
-            title={
-              <>
-                Dúvidas antes de{" "}
-                <span className="text-gradient">tirar seu site do papel?</span>
-              </>
-            }
-            description="Separei as principais respostas para você entender como funciona o processo antes de me chamar."
-            align="center"
-            animated={false}
-          />
-        </motion.div>
+    <section
+      id="faq"
+      className="relative scroll-mt-24 bg-gray py-20 text-ink md:py-28"
+    >
+      <div className="mx-auto grid max-w-7xl gap-12 px-4 lg:grid-cols-12">
+        <div className="lg:col-span-5">
+          <div className="lg:sticky lg:top-28">
+            <div className="mb-4 flex items-center gap-2 font-mono text-[11px] font-bold uppercase tracking-widest text-background">
+              <span className="h-2 w-2 rounded-full bg-background" />
+              Dúvidas
+            </div>
+            <h2 className="font-display text-6xl uppercase leading-[0.9] tracking-tight md:text-8xl">
+              Perguntas antes de <span className="text-background">fechar</span>
+            </h2>
+            <p className="mt-5 max-w-sm text-base text-ink/75">
+              Não achou a sua? Me pergunta direto, respondo no mesmo dia.
+            </p>
+            <a
+              href={waLink(
+                "Oi, Cristine! Tenho uma dúvida sobre criação de site.",
+              )}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-6 inline-flex items-center gap-2 rounded-full bg-background px-6 py-3 text-sm font-bold text-white transition hover:scale-[1.03]"
+            >
+              <MessageCircle className="h-4 w-4" />
+              Perguntar no WhatsApp
+            </a>
+          </div>
+        </div>
 
-        <div className="mt-14 space-y-3">
-          {faqs.map((faq, i) => {
-            const isOpen = openIndex === i;
+        <ul className="border-t-2 border-ink lg:col-span-7">
+          {faqs.map((f, i) => {
+            const open = aberta === i;
             return (
-              <motion.div
-                key={faq.q}
-                initial={{ opacity: 0, y: 16 }}
-                animate={
-                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }
-                }
-                transition={{
-                  duration: 0.5,
-                  delay: i * 0.08,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-                className={`overflow-hidden rounded-2xl glass transition-all duration-300 hover:bg-white/[0.04] ${
-                  isOpen
-                    ? "border border-brand/30 bg-white/[0.03]"
-                    : "border border-white/[0.08]"
-                }`}
-              >
+              <li key={f.q} className="border-b-2 border-ink/15">
                 <button
-                  onClick={() => toggle(i)}
-                  className="flex w-full items-center justify-between gap-4 p-5 text-left md:p-6"
-                  aria-expanded={isOpen}
+                  onClick={() => setAberta(open ? null : i)}
+                  aria-expanded={open}
+                  className="flex w-full items-center gap-5 py-6 text-left"
                 >
-                  <span
-                    className={`text-base font-semibold leading-snug md:text-lg transition-colors duration-300 ${isOpen ? "text-foreground" : "text-muted-foreground"}`}
-                  >
-                    {faq.q}
+                  <span className="font-display text-3xl leading-none text-background">
+                    {String(i + 1).padStart(2, "0")}
                   </span>
-                  <div
-                    className={`grid shrink-0 place-items-center rounded-full h-8 w-8 transition-colors duration-300 ${
-                      isOpen
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-white/[0.08] text-muted-foreground group-hover:bg-white/[0.12]"
+                  <span className="flex-1 text-lg font-semibold md:text-xl">
+                    {f.q}
+                  </span>
+                  <span
+                    className={`grid h-9 w-9 shrink-0 place-items-center rounded-full transition ${
+                      open ? "bg-background text-white" : "bg-ink/10"
                     }`}
                   >
-                    {isOpen ? (
+                    {open ? (
                       <Minus className="h-4 w-4" />
                     ) : (
                       <Plus className="h-4 w-4" />
                     )}
-                  </div>
+                  </span>
                 </button>
-                <AnimatePresence>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
-                    >
-                      <div className="px-5 pb-6 pt-1 md:px-6 md:pb-7 text-sm md:text-base text-muted-foreground leading-relaxed border-t border-white/[0.04] mt-2 pt-5">
-                        {faq.a}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
+                <div
+                  className={`grid transition-[grid-template-rows] duration-300 ${
+                    open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <p className="pb-6 pl-[3.25rem] pr-12 text-base leading-relaxed text-ink/75">
+                      {f.a}
+                    </p>
+                  </div>
+                </div>
+              </li>
             );
           })}
-        </div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-16 text-center"
-        >
-          <p className="mb-5 text-sm font-medium text-muted-foreground">
-            Ainda ficou alguma dúvida?
-          </p>
-          <a
-            href={waLink(
-              "Oi, Cristine! Tenho uma dúvida sobre criação de site.",
-            )}
-            target="_blank"
-            rel="noreferrer"
-            className="group/btn inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand px-8 py-3 text-sm font-bold text-ink shadow-[0_0_20px_rgba(37,211,102,0.2)] transition hover:opacity-90 hover:shadow-[0_0_30px_rgba(37,211,102,0.4)] glow"
-          >
-            <MessageCircle className="h-5 w-5" />
-            Me chamar no WhatsApp
-          </a>
-        </motion.div>
+        </ul>
       </div>
     </section>
   );
