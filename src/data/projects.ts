@@ -1,119 +1,80 @@
 /**
- * PORTFÓLIO — edite aqui para adicionar, remover ou trocar projetos.
+ * VITRINE DO PORTFÓLIO — cada projeto aparece embutido e navegável no portfólio.
  *
- * status:
- *   "ao-vivo"  → tem link público; aparece o botão "Ver site ao vivo"
- *   "conceito" → só a imagem; aparece apenas "Quero um site assim"
+ * Para adicionar um site novo:
+ *   1. crie a página em src/pages/demos/
+ *   2. registre a rota em src/main.tsx
+ *   3. adicione um item aqui com o mesmo caminho em `url`
  *
- * Imagens ficam em /public/portfolio/ (formato .webp, proporção 4:3).
+ * Também funciona com sites externos (url começando com https://), desde que o
+ * site permita ser exibido dentro de outro (alguns bloqueiam).
  */
 
-export type SiteProject = {
+export type Project = {
   id: string;
   title: string;
-  niche: string;
+  tipo: "Landing page" | "Site institucional" | "Sistema";
+  nicho: string;
   description: string;
-  image: string;
-  status: "ao-vivo" | "conceito";
-  liveUrl?: string;
-  tags: string[];
+  destaques: string[];
+  url: string;
 };
 
-export const sites: SiteProject[] = [
+export const projects: Project[] = [
   {
-    id: "barbearia",
-    title: "Navalha Prime",
-    niche: "Barbearia",
+    id: "lumi",
+    title: "Lumi Estética",
+    tipo: "Landing page",
+    nicho: "Beleza e estética",
     description:
-      "Site completo com serviços e preços, experiência do cliente, depoimentos e agendamento direto pelo WhatsApp.",
-    image: "/portfolio/barbearia-navalha-prime.webp",
-    status: "ao-vivo",
-    liveUrl: "/modelos/barbearia",
-    tags: ["Agendamento", "Serviços", "WhatsApp"],
+      "Clínica de estética com visual editorial, tabela de tratamentos por categoria e agendamento de avaliação.",
+    destaques: [
+      "Tratamentos com filtro",
+      "Preços “a partir de”",
+      "Agendamento pelo WhatsApp",
+    ],
+    url: "/demos/lumi-estetica",
   },
   {
-    id: "academia",
-    title: "Academia Fitness",
-    niche: "Academia",
+    id: "casa-miga",
+    title: "Casa Miga",
+    tipo: "Site institucional",
+    nicho: "Alimentação",
     description:
-      "Plataforma para academia com modalidades, planos, equipe e área de gestão de alunos com dashboard.",
-    image: "/portfolio/academia.webp",
-    status: "ao-vivo",
-    liveUrl: "https://academia-protp.lovable.app",
-    tags: ["Planos", "Dashboard", "Matrícula"],
+      "Padaria artesanal com cardápio interativo: o cliente monta a sacola e envia o pedido pronto no WhatsApp.",
+    destaques: [
+      "Carrinho de encomendas",
+      "Pedido automático no WhatsApp",
+      "Horário das fornadas",
+    ],
+    url: "/demos/casa-miga",
   },
   {
-    id: "restaurante",
-    title: "Tavola Prime",
-    niche: "Restaurante",
+    id: "odonto-mare",
+    title: "Odonto Maré",
+    tipo: "Site institucional",
+    nicho: "Saúde",
     description:
-      "Site elegante para restaurante com cardápio em destaque, reservas e apresentação da experiência da casa.",
-    image: "/portfolio/restaurante-cafeteria.webp",
-    status: "ao-vivo",
-    liveUrl: "https://trevolaprotop.lovable.app/",
-    tags: ["Cardápio", "Reservas", "Delivery"],
+      "Clínica odontológica com agendamento em 3 cliques, tratamentos, convênios, equipe e dúvidas frequentes.",
+    destaques: [
+      "Escolha de dia e horário",
+      "Convênios e equipe",
+      "Perguntas frequentes",
+    ],
+    url: "/demos/odonto-mare",
   },
   {
-    id: "clinica",
-    title: "Clínica Estética",
-    niche: "Saúde e beleza",
+    id: "caixa-certo",
+    title: "Caixa Certo",
+    tipo: "Sistema",
+    nicho: "Gestão para pequenos negócios",
     description:
-      "Visual leve e sofisticado com procedimentos, antes e depois, equipe e agendamento de avaliação.",
-    image: "/portfolio/clinica-estetica.webp",
-    status: "conceito",
-    tags: ["Procedimentos", "Avaliação", "Confiança"],
-  },
-  {
-    id: "loja",
-    title: "Loja de Moda",
-    niche: "Varejo",
-    description:
-      "Vitrine de produtos, promoções e categorias, com localização da loja e atendimento pelo WhatsApp.",
-    image: "/portfolio/loja-fisica.webp",
-    status: "conceito",
-    tags: ["Vitrine", "Promoções", "Localização"],
-  },
-  {
-    id: "servicos",
-    title: "Consultoria & Serviços",
-    niche: "Prestador de serviço",
-    description:
-      "Estrutura institucional com serviços, diferenciais, depoimentos e pedido de orçamento rápido.",
-    image: "/portfolio/prestador-servico.webp",
-    status: "conceito",
-    tags: ["Institucional", "Orçamento", "Depoimentos"],
-  },
-];
-
-export type SystemProject = {
-  name: string;
-  type: string;
-  description: string;
-  tech: string[];
-  /** Coloque o link público quando tiver (deploy ou GitHub). */
-  href?: string;
-};
-
-export const systems: SystemProject[] = [
-  {
-    name: "GranaSimples",
-    type: "Sistema de finanças pessoais",
-    description:
-      "Login, dashboard, transações, categorias, metas, gastos fixos e gráficos com insights financeiros.",
-    tech: ["Python", "Flask", "PostgreSQL", "Supabase", "Chart.js"],
-  },
-  {
-    name: "Site de Casamento",
-    type: "Site para evento",
-    description:
-      "Confirmação de presença, lista de presentes com PIX, galeria, fotos dos convidados e painel admin.",
-    tech: ["Supabase", "RSVP", "Upload", "JavaScript"],
-  },
-  {
-    name: "Smykker RR",
-    type: "Marca e presença digital",
-    description:
-      "Identidade visual, catálogo, conteúdo para Instagram e estratégia digital para loja de perfumes e beleza.",
-    tech: ["Branding", "Catálogo", "Instagram"],
+      "Painel com login, faturamento, gráfico interativo, vendas com filtro, agenda do dia e cadastro de clientes.",
+    destaques: [
+      "Login e painel",
+      "Gráfico interativo",
+      "Vendas, agenda e clientes",
+    ],
+    url: "/demos/caixa-certo",
   },
 ];

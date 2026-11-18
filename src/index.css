@@ -619,9 +619,9 @@
 
   /* Custom premium cursor */
   @media (pointer: fine) {
-    html:not(.reduce-motion) body,
-    html:not(.reduce-motion) a,
-    html:not(.reduce-motion) button {
+    html.motion-ready:not(.reduce-motion) body,
+    html.motion-ready:not(.reduce-motion) a,
+    html.motion-ready:not(.reduce-motion) button {
       cursor: none;
     }
 
@@ -1024,4 +1024,15 @@
       transform: translateX(200%);
     }
   }
+}
+
+/* Sites de demonstração: títulos usam a fonte do próprio site, não a do portfólio */
+.demo-root {
+  background-image: none;
+}
+.demo-root h1,
+.demo-root h2,
+.demo-root h3,
+.demo-root h4 {
+  font-family: var(--f-display, inherit);
 }
