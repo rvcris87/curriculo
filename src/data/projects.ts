@@ -36,6 +36,20 @@ export const projects: Project[] = [
     url: "/demos/lumi-estetica",
   },
   {
+    id: "dom-barbearia",
+    title: "Dom Barbearia",
+    tipo: "Landing page",
+    nicho: "Barbearia",
+    description:
+      "Barbearia com agendamento completo: o cliente escolhe serviço, barbeiro e horário livre, e confirma pelo WhatsApp.",
+    destaques: [
+      "Agenda por barbeiro",
+      "Horários ocupados bloqueados",
+      "Clube de assinatura",
+    ],
+    url: "/demos/dom-barbearia",
+  },
+  {
     id: "casa-miga",
     title: "Casa Miga",
     tipo: "Site institucional",
@@ -48,6 +62,20 @@ export const projects: Project[] = [
       "Horário das fornadas",
     ],
     url: "/demos/casa-miga",
+  },
+  {
+    id: "pulso",
+    title: "Pulso Academia",
+    tipo: "Site institucional",
+    nicho: "Academia e fitness",
+    description:
+      "Academia com planos mensal ou anual (o preço muda na hora), grade de aulas por dia e agendamento de aula grátis.",
+    destaques: [
+      "Planos mensal/anual",
+      "Grade de aulas por dia",
+      "Aula experimental",
+    ],
+    url: "/demos/pulso-academia",
   },
   {
     id: "odonto-mare",
