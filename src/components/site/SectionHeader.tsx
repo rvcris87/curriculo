@@ -6,30 +6,48 @@ export function SectionHeader({
   description,
   align = "left",
   animated = true,
+  tone = "dark",
 }: {
   eyebrow?: string;
   title: ReactNode;
   description?: ReactNode;
   align?: "left" | "center";
   animated?: boolean;
+  /** "dark" = seção roxa (texto claro) · "light" = seção cinza (texto roxo) */
+  tone?: "dark" | "light";
 }) {
+  const light = tone === "light";
   return (
     <div
       className={`${animated ? "section-reveal " : ""}${
-        align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl"
+        align === "center" ? "mx-auto max-w-4xl text-center" : "max-w-4xl"
       }`}
     >
       {eyebrow && (
-        <div className="font-mono text-[10px] tracking-widest uppercase text-brand font-semibold flex items-center justify-start gap-2 mb-3">
-          <span className="text-white/30">//</span>
+        <div
+          className={`mb-4 flex items-center gap-2 font-mono text-[11px] font-bold uppercase tracking-widest ${
+            align === "center" ? "justify-center" : ""
+          } ${light ? "text-background" : "text-brand"}`}
+        >
+          <span
+            className={`h-2 w-2 rounded-full ${light ? "bg-background" : "bg-brand"}`}
+          />
           <span>{eyebrow}</span>
         </div>
       )}
-      <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-5xl font-display leading-[1.1]">
+      <h2
+        className={`font-display text-5xl uppercase leading-[0.92] tracking-tight sm:text-6xl md:text-7xl ${
+          light ? "text-ink" : "text-white"
+        }`}
+      >
         {title}
       </h2>
       {description && (
-        <p className="mt-4 text-sm text-muted-foreground leading-relaxed font-sans max-w-2xl">
+        <p
+          className={`mt-5 max-w-2xl text-base leading-relaxed ${
+            light ? "text-ink/75" : "text-muted-foreground"
+          }`}
+        >
           {description}
         </p>
       )}

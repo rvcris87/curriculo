@@ -1,3 +1,5 @@
+import "@fontsource/archivo-black";
+import "@fontsource-variable/manrope";
 import { useState } from "react";
 import {
   CalendarCheck,
@@ -10,11 +12,12 @@ import {
 import { useDemoSetup } from "./useDemoSetup";
 
 const C = {
-  navy: "#0B2545",
-  teal: "#0E9F94",
-  ice: "#EEF6F8",
-  soft: "#55657A",
-  line: "#DCE7EC",
+  navy: "#071A63", // azul profundo (texto)
+  teal: "#0131CD", // azul principal
+  lime: "#B9FC01",
+  ice: "#0131CD",
+  soft: "#4B5A86",
+  line: "#DDE3F5",
 };
 
 const tratamentos = [
@@ -63,11 +66,7 @@ const dias = ["Seg 24", "Ter 25", "Qua 26", "Qui 27", "Sex 28"];
 const horarios = ["08:00", "09:30", "11:00", "14:00", "15:30", "17:00"];
 
 export function OdontoMare() {
-  useDemoSetup(
-    "Odonto Maré — Clínica odontológica",
-    "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap",
-    "#ffffff",
-  );
+  useDemoSetup("Odonto Maré — Clínica odontológica", "#ffffff");
   const [trat, setTrat] = useState("Avaliação");
   const [dia, setDia] = useState(dias[0]);
   const [hora, setHora] = useState<string | null>(null);
@@ -77,12 +76,12 @@ export function OdontoMare() {
 
   return (
     <div
-      className="demo-root min-h-screen bg-white"
+      className="demo-root min-h-screen overflow-x-clip bg-white"
       style={
         {
           color: C.navy,
-          fontFamily: "Manrope, sans-serif",
-          "--f-display": "Manrope, sans-serif",
+          fontFamily: "'Manrope Variable', sans-serif",
+          "--f-display": "'Archivo Black', sans-serif",
         } as React.CSSProperties
       }
     >
@@ -121,22 +120,33 @@ export function OdontoMare() {
       </header>
 
       {/* Hero + agendamento */}
-      <section style={{ background: C.ice }}>
-        <div className="mx-auto grid max-w-6xl gap-12 px-6 py-16 lg:grid-cols-2 lg:py-20">
-          <div className="self-center">
+      <section
+        className="relative overflow-hidden"
+        style={{ background: C.ice, color: "#fff" }}
+      >
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.12]"
+          style={{
+            backgroundImage:
+              "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
+            backgroundSize: "48px 48px",
+          }}
+        />
+        <div className="relative mx-auto grid max-w-6xl gap-12 px-6 py-16 lg:grid-cols-2 lg:py-20">
+          <div className="relative self-center">
             <span
-              className="rounded-full bg-white px-3 py-1 text-xs font-bold"
-              style={{ color: C.teal }}
+              className="rounded-full px-3 py-1 text-xs font-bold"
+              style={{ background: C.lime, color: C.navy }}
             >
-              Atendimento de urgência no mesmo dia
+              Urgência no mesmo dia
             </span>
-            <h1 className="mt-6 text-4xl font-extrabold leading-[1.08] tracking-tight md:text-6xl">
-              Cuidar do sorriso sem medo da cadeira.
+            <h1 className="mt-6 text-5xl uppercase leading-[0.95] md:text-7xl">
+              Sorria
+              <br />
+              <span style={{ color: C.lime }}>sem medo.</span>
             </h1>
-            <p
-              className="mt-6 max-w-md text-lg leading-relaxed"
-              style={{ color: C.soft }}
-            >
+            <p className="mt-6 max-w-md text-lg leading-relaxed opacity-85">
               Clínica completa no Pina, com tomografia no local, sedação
               consciente e horários até as 20h.
             </p>
@@ -148,22 +158,47 @@ export function OdontoMare() {
               ].map(([n, l]) => (
                 <div key={l}>
                   <div
-                    className="text-3xl font-extrabold"
-                    style={{ color: C.teal }}
+                    className="text-4xl"
+                    style={{ fontFamily: "'Archivo Black'", color: C.lime }}
                   >
                     {n}
                   </div>
-                  <div className="text-xs" style={{ color: C.soft }}>
-                    {l}
-                  </div>
+                  <div className="text-xs opacity-80">{l}</div>
                 </div>
               ))}
+            </div>
+
+            {/* Selo giratório */}
+            <div className="pointer-events-none absolute -top-6 right-0 hidden h-28 w-28 md:block">
+              <svg
+                viewBox="0 0 100 100"
+                className="h-full w-full animate-[spin_16s_linear_infinite]"
+              >
+                <defs>
+                  <path
+                    id="odc"
+                    d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0"
+                  />
+                </defs>
+                <circle cx="50" cy="50" r="48" fill={C.lime} />
+                <text
+                  fontSize="9"
+                  fontWeight="800"
+                  letterSpacing="2"
+                  fill={C.navy}
+                >
+                  <textPath href="#odc">
+                    AVALIAÇÃO R$ 90 · AGENDE AGORA ·{" "}
+                  </textPath>
+                </text>
+              </svg>
             </div>
           </div>
 
           <div
             id="agendar"
-            className="rounded-3xl bg-white p-6 shadow-[0_20px_60px_-30px_rgba(11,37,69,0.4)] md:p-8"
+            className="rounded-3xl bg-white p-6 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.5)] md:p-8"
+            style={{ color: C.navy }}
           >
             <div className="flex items-center gap-2 font-extrabold">
               <CalendarCheck className="h-5 w-5" style={{ color: C.teal }} />{" "}
@@ -252,8 +287,8 @@ export function OdontoMare() {
               href={`https://wa.me/5581900000000?text=${encodeURIComponent(msg)}`}
               target="_blank"
               rel="noreferrer"
-              className="mt-6 block rounded-xl py-3.5 text-center text-sm font-extrabold text-white"
-              style={{ background: C.teal }}
+              className="mt-6 block rounded-xl py-3.5 text-center text-sm font-extrabold"
+              style={{ background: C.lime, color: C.navy }}
             >
               {hora ? `Confirmar ${dia} às ${hora}` : "Escolha um horário"}
             </a>
@@ -263,7 +298,7 @@ export function OdontoMare() {
 
       {/* Tratamentos */}
       <section id="tratamentos" className="mx-auto max-w-6xl px-6 py-20">
-        <h2 className="text-3xl font-extrabold md:text-4xl">Tratamentos</h2>
+        <h2 className="text-3xl uppercase md:text-5xl">Tratamentos</h2>
         <div
           className="mt-10 grid gap-px overflow-hidden rounded-3xl border sm:grid-cols-2 lg:grid-cols-4"
           style={{ borderColor: C.line, background: C.line }}
@@ -305,11 +340,11 @@ export function OdontoMare() {
       {/* Equipe */}
       <section
         id="equipe"
-        style={{ background: C.navy }}
+        style={{ background: C.teal }}
         className="text-white"
       >
         <div className="mx-auto max-w-6xl px-6 py-20">
-          <h2 className="text-3xl font-extrabold md:text-4xl">
+          <h2 className="text-3xl uppercase md:text-5xl">
             Quem vai cuidar de você
           </h2>
           <div className="mt-10 grid gap-6 sm:grid-cols-3">
@@ -325,7 +360,7 @@ export function OdontoMare() {
               >
                 <div
                   className="grid h-14 w-14 place-items-center rounded-full text-lg font-extrabold"
-                  style={{ background: C.teal }}
+                  style={{ background: C.lime, color: C.navy }}
                 >
                   {i}
                 </div>
@@ -339,9 +374,7 @@ export function OdontoMare() {
 
       {/* FAQ */}
       <section id="duvidas" className="mx-auto max-w-3xl px-6 py-20">
-        <h2 className="text-3xl font-extrabold md:text-4xl">
-          Dúvidas frequentes
-        </h2>
+        <h2 className="text-3xl uppercase md:text-5xl">Dúvidas frequentes</h2>
         <div
           className="mt-8 divide-y rounded-2xl border"
           style={{ borderColor: C.line }}

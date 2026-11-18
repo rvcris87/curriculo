@@ -4,7 +4,6 @@ import {
   Hand,
   MessageCircle,
   Monitor,
-  MousePointerClick,
   Smartphone,
 } from "lucide-react";
 import { SectionHeader } from "./SectionHeader";
@@ -13,14 +12,18 @@ import { waLink } from "@/lib/contact";
 
 export function Portfolio() {
   return (
-    <section id="portfolio" className="relative scroll-mt-24 py-20 md:py-28">
+    <section
+      id="portfolio"
+      className="relative scroll-mt-24 bg-gray py-20 text-ink md:py-28"
+    >
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeader
           eyebrow="Portfólio"
+          tone="light"
           title={
             <>
               Navegue pelos sites{" "}
-              <span className="text-gradient">aqui mesmo</span>
+              <span className="text-background">aqui mesmo</span>
             </>
           }
           description="Cada projeto abaixo é um site funcionando. Clique dentro da tela para navegar, testar os botões e ver a versão de celular."
@@ -32,9 +35,9 @@ export function Portfolio() {
             <a
               key={p.id}
               href={`#projeto-${p.id}`}
-              className="rounded-full border border-white/10 px-4 py-2 text-xs font-medium text-white/70 transition hover:border-white/30 hover:text-white"
+              className="rounded-full border-2 border-ink/15 px-4 py-2 text-xs font-semibold text-ink/80 transition hover:border-background hover:bg-background hover:text-white"
             >
-              <span className="mr-2 font-mono text-white/35">
+              <span className="mr-2 font-mono text-background">
                 {String(i + 1).padStart(2, "0")}
               </span>
               {p.title}
@@ -61,9 +64,20 @@ function EmbeddedProject({
 }) {
   const [device, setDevice] = useState<"desktop" | "mobile">("desktop");
   const [active, setActive] = useState(false);
+  const [touch, setTouch] = useState(false);
+  const activeRef = useRef(false);
   const frameRef = useRef<HTMLDivElement>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
-  // Ao sair da tela, trava de novo o site embutido (evita "prender" a rolagem).
+  useEffect(() => {
+    activeRef.current = active;
+  }, [active]);
+
+  useEffect(() => {
+    setTouch(window.matchMedia("(hover: none)").matches);
+  }, []);
+
+  // Ao sair da tela, o site volta a deixar a rolagem para o portfólio.
   useEffect(() => {
     const el = frameRef.current;
     if (!el) return;
@@ -77,6 +91,41 @@ function EmbeddedProject({
     return () => io.disconnect();
   }, []);
 
+  // Desktop: quando o mouse sai da moldura, a rolagem volta para o portfólio.
+  useEffect(() => {
+    if (!active || touch) return;
+    const onMove = (e: PointerEvent) => {
+      const r = iframeRef.current?.getBoundingClientRect();
+      if (!r) return;
+      const inside =
+        e.clientX >= r.left &&
+        e.clientX <= r.right &&
+        e.clientY >= r.top &&
+        e.clientY <= r.bottom;
+      if (!inside) setActive(false);
+    };
+    window.addEventListener("pointermove", onMove);
+    return () => window.removeEventListener("pointermove", onMove);
+  }, [active, touch]);
+
+  // Desktop: cliques funcionam sempre; a roda do mouse só rola o site depois do primeiro clique nele.
+  const onIframeLoad = () => {
+    const doc = iframeRef.current?.contentDocument;
+    if (!doc) return; // site externo: sem controle, comportamento padrão do navegador
+    doc.addEventListener("pointerdown", () => setActive(true));
+    doc.addEventListener(
+      "wheel",
+      (e) => {
+        if (activeRef.current) return;
+        e.preventDefault();
+        const factor =
+          e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? window.innerHeight : 1;
+        window.scrollBy({ top: e.deltaY * factor, left: 0 });
+      },
+      { passive: false },
+    );
+  };
+
   const external = p.url.startsWith("http");
   const shownUrl = external
     ? new URL(p.url).host + new URL(p.url).pathname
@@ -88,24 +137,24 @@ function EmbeddedProject({
       <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
         <div className="lg:col-span-7">
           <div className="flex items-baseline gap-4">
-            <span className="font-mono text-sm text-brand">
+            <span className="font-mono text-sm font-bold text-background">
               {String(index + 1).padStart(2, "0")}
             </span>
-            <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-ink/60">
               {p.tipo} · {p.nicho}
             </span>
           </div>
-          <h3 className="mt-3 text-3xl font-semibold tracking-tight text-white md:text-5xl">
+          <h3 className="mt-3 font-display text-5xl uppercase leading-none tracking-tight text-ink md:text-7xl">
             {p.title}
           </h3>
-          <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">
+          <p className="mt-4 max-w-xl text-sm leading-relaxed text-ink/75 md:text-base">
             {p.description}
           </p>
           <ul className="mt-5 flex flex-wrap gap-2">
             {p.destaques.map((d) => (
               <li
                 key={d}
-                className="rounded-full border border-white/10 px-3 py-1 text-[11px] font-medium text-white/70"
+                className="rounded-full bg-white px-3 py-1 text-[11px] font-semibold text-ink/80"
               >
                 {d}
               </li>
@@ -115,7 +164,7 @@ function EmbeddedProject({
 
         <div className="flex flex-wrap items-center gap-2 lg:col-span-5 lg:justify-end">
           <div
-            className="hidden rounded-full border border-white/10 p-1 md:flex"
+            className="hidden rounded-full border-2 border-ink/15 p-1 md:flex"
             role="group"
             aria-label="Visualização"
           >
@@ -131,8 +180,8 @@ function EmbeddedProject({
                 aria-pressed={device === d}
                 className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition ${
                   device === d
-                    ? "bg-white text-black"
-                    : "text-white/60 hover:text-white"
+                    ? "bg-ink text-white"
+                    : "text-ink/60 hover:text-ink"
                 }`}
               >
                 <Icon className="h-3.5 w-3.5" /> {label}
@@ -143,7 +192,7 @@ function EmbeddedProject({
             href={p.url}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-full border border-white/15 px-4 py-2 text-xs font-semibold text-white transition hover:bg-white/10"
+            className="inline-flex items-center gap-1.5 rounded-full border-2 border-ink px-4 py-2 text-xs font-bold text-ink transition hover:bg-ink hover:text-white"
           >
             Abrir em tela cheia <ArrowUpRight className="h-3.5 w-3.5" />
           </a>
@@ -153,7 +202,7 @@ function EmbeddedProject({
             )}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground transition hover:opacity-90"
+            className="inline-flex items-center gap-1.5 rounded-full bg-background px-4 py-2.5 text-xs font-bold text-white transition hover:scale-[1.03]"
           >
             <MessageCircle className="h-3.5 w-3.5" /> Quero um assim
           </a>
@@ -163,8 +212,7 @@ function EmbeddedProject({
       {/* Site embutido */}
       <div
         ref={frameRef}
-        onMouseLeave={() => setActive(false)}
-        className={`relative mx-auto mt-8 overflow-hidden border border-white/[0.1] bg-[#0d1016] shadow-[0_40px_120px_-40px_rgba(0,0,0,0.9)] transition-all duration-500 ${
+        className={`relative mx-auto mt-8 overflow-hidden border-2 border-ink bg-ink shadow-[0_40px_80px_-40px_rgba(42,5,96,0.6)] transition-all duration-500 ${
           device === "mobile"
             ? "max-w-[400px] rounded-[2.2rem] p-2.5"
             : "max-w-none rounded-2xl"
@@ -191,25 +239,43 @@ function EmbeddedProject({
           }`}
         >
           <iframe
+            ref={iframeRef}
             src={p.url}
             title={`Site ${p.title}`}
             loading="lazy"
+            onLoad={onIframeLoad}
             className="h-full w-full border-0"
-            style={{ pointerEvents: active ? "auto" : "none" }}
+            style={{ pointerEvents: touch && !active ? "none" : "auto" }}
           />
 
-          {/* Trava: evita que a rolagem da página fique presa dentro do site */}
-          {!active && (
+          {/* Desktop: aviso discreto de como rolar dentro do site */}
+          {!touch && (
+            <div className="pointer-events-none absolute right-4 top-4 rounded-full bg-black/75 px-3 py-1.5 text-[11px] font-semibold text-white ring-1 ring-white/15 backdrop-blur-md transition">
+              {active
+                ? "Rolando dentro do site"
+                : "Clique no site para rolar dentro dele"}
+            </div>
+          )}
+
+          {/* Celular: toque para liberar o site (evita prender a rolagem da página) */}
+          {touch && !active && (
             <button
               onClick={() => setActive(true)}
               aria-label={`Navegar no site ${p.title}`}
-              className="group absolute inset-0 flex items-end justify-center bg-gradient-to-t from-black/45 via-transparent to-transparent pb-8 transition hover:from-black/55"
+              className="absolute inset-0 grid place-items-center bg-black/25"
             >
-              <span className="inline-flex items-center gap-2 rounded-full bg-black/80 px-5 py-2.5 text-sm font-semibold text-white ring-1 ring-white/15 backdrop-blur-md transition group-hover:scale-105">
-                <MousePointerClick className="hidden h-4 w-4 md:block" />
-                <Hand className="h-4 w-4 md:hidden" />
-                Clique para navegar no site
+              <span className="inline-flex items-center gap-2 rounded-full bg-black/85 px-5 py-2.5 text-sm font-semibold text-white ring-1 ring-white/15">
+                <Hand className="h-4 w-4" />
+                Toque para navegar
               </span>
+            </button>
+          )}
+          {touch && active && (
+            <button
+              onClick={() => setActive(false)}
+              className="absolute right-3 top-3 rounded-full bg-black/85 px-3 py-1.5 text-xs font-semibold text-white ring-1 ring-white/15"
+            >
+              Sair do site
             </button>
           )}
         </div>

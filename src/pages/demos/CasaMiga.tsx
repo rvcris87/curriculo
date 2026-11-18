@@ -1,13 +1,17 @@
+import "@fontsource-variable/bricolage-grotesque";
+import "@fontsource/dm-serif-display/400-italic.css";
+import "@fontsource-variable/inter";
 import { useMemo, useState } from "react";
 import { Minus, Plus, ShoppingBag } from "lucide-react";
 import { useDemoSetup } from "./useDemoSetup";
 
 const C = {
-  cream: "#FFF4E2",
-  crust: "#B4441B",
-  brown: "#3A2215",
-  mustard: "#F2B544",
-  soft: "#7A5A45",
+  cream: "#FDF7E6",
+  crust: "#E71506", // vermelho
+  brown: "#0B4A25", // verde escuro (texto e blocos)
+  green: "#018D3E", // verde
+  mustard: "#E71506",
+  soft: "#4E6B57",
 };
 
 type Item = { id: string; nome: string; desc: string; preco: number };
@@ -80,11 +84,7 @@ const brl = (n: number) =>
   n.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 
 export function CasaMiga() {
-  useDemoSetup(
-    "Casa Miga — Padaria artesanal",
-    "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Serif+Display:ital@1&family=Inter:wght@400;500;600&display=swap",
-    C.cream,
-  );
+  useDemoSetup("Casa Miga — Padaria artesanal", C.cream);
   const [aba, setAba] = useState("Pães");
   const [carrinho, setCarrinho] = useState<Record<string, number>>({});
 
@@ -107,13 +107,13 @@ export function CasaMiga() {
 
   return (
     <div
-      className="demo-root min-h-screen"
+      className="demo-root min-h-screen overflow-x-clip"
       style={
         {
           background: C.cream,
           color: C.brown,
-          fontFamily: "Inter, sans-serif",
-          "--f-display": "'Bricolage Grotesque', sans-serif",
+          fontFamily: "'Inter Variable', sans-serif",
+          "--f-display": "'Bricolage Grotesque Variable', sans-serif",
         } as React.CSSProperties
       }
     >
@@ -129,7 +129,7 @@ export function CasaMiga() {
       <header className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
         <span
           className="text-2xl font-extrabold tracking-tight"
-          style={{ fontFamily: "'Bricolage Grotesque'" }}
+          style={{ fontFamily: "'Bricolage Grotesque Variable'" }}
         >
           casa miga
         </span>
@@ -141,69 +141,96 @@ export function CasaMiga() {
         <a
           href="#cardapio"
           className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold"
-          style={{ background: C.mustard }}
+          style={{ background: C.crust, color: C.cream }}
         >
           <ShoppingBag className="h-4 w-4" /> {qtd}
         </a>
       </header>
 
       {/* Hero */}
-      <section className="relative mx-auto max-w-6xl overflow-hidden px-6 pb-16 pt-8">
-        <h1
-          className="text-[15vw] font-extrabold uppercase leading-[0.85] tracking-tight md:text-[9.5rem]"
-          style={{ color: C.crust }}
-        >
-          Pão
-          <br />
-          de verdade
-        </h1>
-        <div className="mt-8 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-          <p className="max-w-md text-lg leading-relaxed">
-            Fermentação natural, farinha de moinho pequeno e{" "}
-            <span
-              style={{
-                fontFamily: "'DM Serif Display'",
-                fontStyle: "italic",
-                fontSize: "1.3em",
-              }}
-            >
-              paciência
-            </span>
-            . Uma padaria de bairro no Espinheiro desde 2019.
+      <section
+        className="relative overflow-hidden"
+        style={{ background: C.green, color: C.cream }}
+      >
+        <div className="relative mx-auto max-w-6xl px-6 pb-16 pt-12">
+          <p className="text-center text-xs font-semibold uppercase tracking-[0.3em] opacity-80">
+            Padaria artesanal · Espinheiro, Recife
           </p>
-          <a
-            href="#cardapio"
-            className="self-start rounded-full px-8 py-4 text-base font-semibold text-white md:self-auto"
-            style={{ background: C.brown }}
+          <h1
+            className="relative z-0 mt-10 text-center font-extrabold uppercase leading-[0.82] tracking-tight"
+            style={{ fontSize: "clamp(4rem, 17vw, 13rem)" }}
           >
-            Montar meu pedido →
-          </a>
-        </div>
+            Pão de
+            <br />
+            verdade
+          </h1>
 
-        {/* Selo giratório */}
-        <div className="pointer-events-none absolute right-6 top-4 hidden h-36 w-36 md:block">
-          <svg
-            viewBox="0 0 100 100"
-            className="h-full w-full animate-[spin_18s_linear_infinite]"
-          >
-            <defs>
-              <path
-                id="circ"
-                d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"
-              />
-            </defs>
-            <circle cx="50" cy="50" r="48" fill={C.mustard} />
-            <text
-              fontSize="9.5"
-              fontWeight="700"
-              letterSpacing="2"
-              fill={C.brown}
+          {/* "Pães" recortados sobre o título */}
+          <span
+            aria-hidden
+            className="absolute left-[14%] top-[30%] z-10 h-20 w-20 rounded-full md:h-36 md:w-36"
+            style={{
+              background: `radial-gradient(circle at 35% 30%, #ff6b4a, ${C.crust} 55%, #9e0c02)`,
+              boxShadow: "0 20px 40px -10px rgba(0,0,0,0.45)",
+            }}
+          />
+          <span
+            aria-hidden
+            className="absolute right-[12%] top-[58%] z-10 h-16 w-16 rounded-full md:h-28 md:w-28"
+            style={{
+              background: `radial-gradient(circle at 35% 30%, #ff6b4a, ${C.crust} 55%, #9e0c02)`,
+              boxShadow: "0 20px 40px -10px rgba(0,0,0,0.45)",
+            }}
+          />
+
+          <div className="relative z-20 mt-10 flex flex-col items-center gap-6 text-center">
+            <p className="max-w-lg text-lg leading-relaxed">
+              Fermentação natural de 36 horas, farinha de moinho pequeno e{" "}
+              <span
+                style={{
+                  fontFamily: "'DM Serif Display'",
+                  fontStyle: "italic",
+                  fontSize: "1.3em",
+                }}
+              >
+                paciência
+              </span>
+              . Desde 2019.
+            </p>
+            <a
+              href="#cardapio"
+              className="rounded-full px-8 py-4 text-base font-bold"
+              style={{ background: C.cream, color: C.brown }}
             >
-              <textPath href="#circ">
-                FERMENTAÇÃO NATURAL · 36 HORAS ·{" "}
-              </textPath>
-            </text>
-          </svg>
+              Montar meu pedido →
+            </a>
+          </div>
+
+          {/* Selo giratório */}
+          <div className="pointer-events-none absolute right-6 top-6 hidden h-32 w-32 md:block">
+            <svg
+              viewBox="0 0 100 100"
+              className="h-full w-full animate-[spin_18s_linear_infinite]"
+            >
+              <defs>
+                <path
+                  id="circ"
+                  d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"
+                />
+              </defs>
+              <circle cx="50" cy="50" r="48" fill={C.crust} />
+              <text
+                fontSize="9.5"
+                fontWeight="700"
+                letterSpacing="2"
+                fill={C.cream}
+              >
+                <textPath href="#circ">
+                  FORNADA DAS 7H · FEITO À MÃO ·{" "}
+                </textPath>
+              </text>
+            </svg>
+          </div>
         </div>
       </section>
 
@@ -343,8 +370,8 @@ export function CasaMiga() {
               aria-disabled={!itens.length}
               className="mt-5 block rounded-full py-3.5 text-center text-sm font-bold transition"
               style={{
-                background: C.mustard,
-                color: C.brown,
+                background: C.crust,
+                color: C.cream,
                 opacity: itens.length ? 1 : 0.4,
                 pointerEvents: itens.length ? "auto" : "none",
               }}

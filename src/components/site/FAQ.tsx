@@ -150,7 +150,7 @@ export function FAQ() {
             )}
             target="_blank"
             rel="noreferrer"
-            className="group/btn inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-8 py-3 text-sm font-semibold text-white shadow-[0_0_20px_rgba(37,211,102,0.2)] transition hover:opacity-90 hover:shadow-[0_0_30px_rgba(37,211,102,0.4)] glow"
+            className="group/btn inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand px-8 py-3 text-sm font-bold text-ink shadow-[0_0_20px_rgba(37,211,102,0.2)] transition hover:opacity-90 hover:shadow-[0_0_30px_rgba(37,211,102,0.4)] glow"
           >
             <MessageCircle className="h-5 w-5" />
             Me chamar no WhatsApp

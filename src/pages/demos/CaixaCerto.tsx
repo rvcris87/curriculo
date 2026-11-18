@@ -1,3 +1,4 @@
+import "@fontsource-variable/plus-jakarta-sans";
 import { useMemo, useState } from "react";
 import {
   BarChart3,
@@ -16,7 +17,7 @@ const C = {
   ink: "#151515",
   soft: "#6B6B66",
   line: "#E4E4DF",
-  accent: "#FF5A1F",
+  accent: "#FF422A",
   green: "#13834F",
 };
 
@@ -103,76 +104,123 @@ const statusCor: Record<string, { bg: string; fg: string }> = {
 };
 
 export function CaixaCerto() {
-  useDemoSetup(
-    "Caixa Certo — Gestão para pequenos negócios",
-    "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap",
-    C.bg,
-  );
+  useDemoSetup("Caixa Certo — Gestão para pequenos negócios", C.bg);
   const [logado, setLogado] = useState(false);
   const [pagina, setPagina] = useState<Pagina>("Visão geral");
 
   const root = {
     background: C.bg,
     color: C.ink,
-    fontFamily: "'Plus Jakarta Sans', sans-serif",
-    "--f-display": "'Plus Jakarta Sans', sans-serif",
+    fontFamily: "'Plus Jakarta Sans Variable', sans-serif",
+    "--f-display": "'Plus Jakarta Sans Variable', sans-serif",
   } as React.CSSProperties;
 
   if (!logado) {
     return (
-      <div
-        className="demo-root grid min-h-screen place-items-center px-6"
-        style={root}
-      >
-        <div className="w-full max-w-sm">
-          <div className="flex items-center gap-2 text-lg font-extrabold">
-            <span
-              className="grid h-8 w-8 place-items-center rounded-lg text-white"
-              style={{ background: C.accent }}
-            >
-              ₢
-            </span>
-            Caixa Certo
+      <div className="demo-root grid min-h-screen lg:grid-cols-2" style={root}>
+        {/* Lado da marca */}
+        <div
+          className="relative hidden flex-col justify-between overflow-hidden p-10 lg:flex"
+          style={{ background: "#000", color: "#fff" }}
+        >
+          <div className="text-sm font-semibold opacity-70">
+            Gestão para pequenos negócios
           </div>
-          <h1 className="mt-10 text-3xl font-extrabold tracking-tight">
-            Entrar no painel
-          </h1>
-          <p className="mt-2 text-sm" style={{ color: C.soft }}>
-            Este é um ambiente de demonstração. Os dados já estão preenchidos.
-          </p>
-          <form
-            className="mt-8 space-y-4"
-            onSubmit={(e) => {
-              e.preventDefault();
-              setLogado(true);
-            }}
-          >
-            <label className="block text-sm font-semibold">
-              E-mail
-              <input
-                readOnly
-                value="demo@caixacerto.app"
-                className="mt-1.5 w-full rounded-xl border bg-white px-4 py-3 text-sm"
-                style={{ borderColor: C.line }}
-              />
-            </label>
-            <label className="block text-sm font-semibold">
-              Senha
-              <input
-                readOnly
-                type="password"
-                value="demonstracao"
-                className="mt-1.5 w-full rounded-xl border bg-white px-4 py-3 text-sm"
-                style={{ borderColor: C.line }}
-              />
-            </label>
-            <button
-              className="w-full rounded-xl py-3.5 text-sm font-bold text-white"
-              style={{ background: C.ink }}
+          <div>
+            <div
+              className="font-extrabold uppercase leading-[0.85] tracking-tighter"
+              style={{ fontSize: "clamp(4rem, 9vw, 8.5rem)" }}
             >
-              Entrar na demonstração
-            </button>
-          </form>
+              Caixa
+              <br />
+              <span style={{ color: C.accent }}>certo.</span>
+            </div>
+            <p className="mt-6 max-w-sm text-sm leading-relaxed opacity-70">
+              Vendas, agenda e clientes num painel só. Feito para quem não tem
+              tempo de planilha.
+            </p>
+          </div>
+          <div
+            aria-hidden
+            className="absolute -bottom-32 -right-32 h-96 w-96 rounded-full"
+            style={{
+              background: `radial-gradient(circle, ${C.accent} 0%, transparent 65%)`,
+              opacity: 0.55,
+            }}
+          />
+          <div className="relative flex gap-6 text-sm">
+            <div>
+              <div
+                className="text-2xl font-extrabold"
+                style={{ color: C.accent }}
+              >
+                +1.200
+              </div>
+              <div className="opacity-60">negócios usando</div>
+            </div>
+            <div>
+              <div
+                className="text-2xl font-extrabold"
+                style={{ color: C.accent }}
+              >
+                4 min
+              </div>
+              <div className="opacity-60">para configurar</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid place-items-center px-6 py-16">
+          <div className="w-full max-w-sm">
+            <div className="flex items-center gap-2 text-lg font-extrabold">
+              <span
+                className="grid h-8 w-8 place-items-center rounded-lg text-white"
+                style={{ background: C.accent }}
+              >
+                ₢
+              </span>
+              Caixa Certo
+            </div>
+            <h1 className="mt-10 text-3xl font-extrabold tracking-tight">
+              Entrar no painel
+            </h1>
+            <p className="mt-2 text-sm" style={{ color: C.soft }}>
+              Este é um ambiente de demonstração. Os dados já estão preenchidos.
+            </p>
+            <form
+              className="mt-8 space-y-4"
+              onSubmit={(e) => {
+                e.preventDefault();
+                setLogado(true);
+              }}
+            >
+              <label className="block text-sm font-semibold">
+                E-mail
+                <input
+                  readOnly
+                  value="demo@caixacerto.app"
+                  className="mt-1.5 w-full rounded-xl border bg-white px-4 py-3 text-sm"
+                  style={{ borderColor: C.line }}
+                />
+              </label>
+              <label className="block text-sm font-semibold">
+                Senha
+                <input
+                  readOnly
+                  type="password"
+                  value="demonstracao"
+                  className="mt-1.5 w-full rounded-xl border bg-white px-4 py-3 text-sm"
+                  style={{ borderColor: C.line }}
+                />
+              </label>
+              <button
+                className="w-full rounded-xl py-3.5 text-sm font-bold text-white"
+                style={{ background: C.ink }}
+              >
+                Entrar na demonstração
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     );
@@ -189,8 +237,8 @@ export function CaixaCerto() {
     <div className="demo-root flex min-h-screen" style={root}>
       {/* Sidebar */}
       <aside
-        className="hidden w-60 shrink-0 flex-col border-r bg-white p-5 md:flex"
-        style={{ borderColor: C.line }}
+        className="hidden w-60 shrink-0 flex-col p-5 md:flex"
+        style={{ background: "#000", color: "#fff" }}
       >
         <div className="flex items-center gap-2 font-extrabold">
           <span
@@ -209,8 +257,8 @@ export function CaixaCerto() {
               className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition"
               style={
                 pagina === nome
-                  ? { background: C.ink, color: "#fff" }
-                  : { color: C.soft }
+                  ? { background: C.accent, color: "#fff" }
+                  : { color: "rgba(255,255,255,0.6)" }
               }
             >
               <Icon className="h-4 w-4" /> {nome}
@@ -220,7 +268,7 @@ export function CaixaCerto() {
         <button
           onClick={() => setLogado(false)}
           className="mt-auto flex items-center gap-3 px-3 py-2 text-sm font-semibold"
-          style={{ color: C.soft }}
+          style={{ color: "rgba(255,255,255,0.6)" }}
         >
           <LogOut className="h-4 w-4" /> Sair
         </button>

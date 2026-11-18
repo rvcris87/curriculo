@@ -1,5 +1,4 @@
 import { About } from "@/components/site/About";
-import { BentoSolutions } from "@/components/site/BentoSolutions";
 import { CTA } from "@/components/site/CTA";
 import { ExperienceLayer } from "@/components/site/ExperienceLayer";
 import { FAQ } from "@/components/site/FAQ";
@@ -8,7 +7,6 @@ import { Header } from "@/components/site/Header";
 import { Hero } from "@/components/site/Hero";
 import { Method } from "@/components/site/Method";
 import { Portfolio } from "@/components/site/Portfolio";
-import { Problem } from "@/components/site/Problem";
 import { Services } from "@/components/site/Services";
 
 export default function App() {
@@ -19,8 +17,6 @@ export default function App() {
       <main>
         <Hero />
         <Portfolio />
-        <Problem />
-        <BentoSolutions />
         <Services />
         <Method />
         <About />

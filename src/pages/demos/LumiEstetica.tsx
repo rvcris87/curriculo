@@ -1,14 +1,16 @@
+import "@fontsource/bowlby-one";
+import "@fontsource-variable/instrument-sans";
 import { useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { useDemoSetup } from "./useDemoSetup";
 
 const C = {
-  bg: "#F4EFE9",
-  ink: "#2B2422",
-  soft: "#6E625D",
-  clay: "#B98D7A",
-  sage: "#7C8B76",
-  line: "rgba(43,36,34,0.14)",
+  bg: "#FEF1CF", // creme
+  ink: "#0032A8", // azul
+  soft: "#4A5A8C",
+  clay: "#FC3B7F", // rosa
+  sage: "#0032A8",
+  line: "rgba(0,50,168,0.18)",
 };
 
 const tratamentos = {
@@ -40,36 +42,32 @@ const wa = (msg: string) =>
   `https://wa.me/5581900000000?text=${encodeURIComponent(msg)}`;
 
 export function LumiEstetica() {
-  useDemoSetup(
-    "Lumi Estética — Recife",
-    "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300&family=Instrument+Sans:wght@400;500;600&display=swap",
-    C.bg,
-  );
+  useDemoSetup("Lumi Estética — Recife", C.bg);
   const [cat, setCat] = useState<Categoria>("Facial");
   const [menu, setMenu] = useState(false);
 
   return (
     <div
-      className="demo-root min-h-screen antialiased"
+      className="demo-root min-h-screen overflow-x-clip antialiased"
       style={
         {
           background: C.bg,
           color: C.ink,
-          fontFamily: "'Instrument Sans', sans-serif",
-          "--f-display": "'Fraunces', serif",
+          fontFamily: "'Instrument Sans Variable', sans-serif",
+          "--f-display": "'Bowlby One', sans-serif",
         } as React.CSSProperties
       }
     >
       {/* Nav */}
       <header
         className="sticky top-0 z-20 border-b backdrop-blur-md"
-        style={{ borderColor: C.line, background: "rgba(244,239,233,0.85)" }}
+        style={{ borderColor: C.line, background: "rgba(254,241,207,0.92)" }}
       >
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <a
             href="#topo"
-            className="text-2xl italic"
-            style={{ fontFamily: "Fraunces, serif" }}
+            className="text-2xl"
+            style={{ fontFamily: "'Bowlby One', sans-serif" }}
           >
             lumi<span style={{ color: C.clay }}>.</span>
           </a>
@@ -131,91 +129,111 @@ export function LumiEstetica() {
       {/* Hero */}
       <section
         id="topo"
-        className="mx-auto grid max-w-6xl gap-12 px-6 pb-20 pt-14 md:grid-cols-12 md:pt-20"
+        className="relative overflow-hidden"
+        style={{ background: C.clay }}
       >
-        <div className="md:col-span-7">
-          <p
-            className="text-xs uppercase tracking-[0.25em]"
-            style={{ color: C.sage }}
+        <div className="mx-auto max-w-6xl px-6 pb-14 pt-10 md:pt-14">
+          <div
+            className="flex flex-wrap items-center justify-between gap-3 text-xs font-bold uppercase tracking-[0.2em]"
+            style={{ color: C.bg }}
           >
-            Estética integrativa · Boa Viagem
-          </p>
-          <h1 className="mt-6 text-5xl font-light leading-[1.02] md:text-7xl">
-            Sua pele,
-            <br />
-            <em style={{ color: C.clay }}>no tempo dela.</em>
-          </h1>
-          <p
-            className="mt-8 max-w-md text-base leading-relaxed"
-            style={{ color: C.soft }}
-          >
-            Tratamentos faciais e corporais pensados a partir de uma avaliação
-            individual. Sem pacote empurrado, sem promessa milagrosa.
-          </p>
-          <div className="mt-10 flex flex-wrap items-center gap-4">
-            <a
-              href={wa("Olá! Quero agendar uma avaliação na Lumi.")}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-medium text-white"
-              style={{ background: C.ink }}
-            >
-              Agendar avaliação gratuita <ArrowUpRight className="h-4 w-4" />
-            </a>
-            <a
-              href="#tratamentos"
-              className="text-sm underline underline-offset-4"
-            >
-              Ver tratamentos
-            </a>
+            <span>Estética integrativa</span>
+            <span>Boa Viagem · Recife</span>
           </div>
-        </div>
-
-        {/* Composição visual */}
-        <div className="relative h-[380px] md:col-span-5 md:h-auto">
-          <div
-            className="absolute right-0 top-0 h-[85%] w-[72%] rounded-t-full"
-            style={{
-              background: `linear-gradient(160deg, #E7D3C7, ${C.clay})`,
-            }}
-          />
-          <div
-            className="absolute bottom-0 left-0 h-[55%] w-[52%] rounded-t-full"
-            style={{
-              background: `linear-gradient(160deg, #C9D1C2, ${C.sage})`,
-            }}
-          />
-          <div
-            className="absolute bottom-6 right-4 rounded-2xl bg-white/85 px-5 py-4 shadow-sm backdrop-blur"
-            style={{ color: C.ink }}
+          <h1
+            className="mt-4 select-none text-center leading-[0.82] tracking-tight"
+            style={{ color: C.bg, fontSize: "clamp(5.5rem, 27vw, 21rem)" }}
           >
-            <div className="text-3xl" style={{ fontFamily: "Fraunces, serif" }}>
-              4.9<span className="text-base">/5</span>
+            LUMI
+          </h1>
+
+          {/* "Recorte" sobre o título */}
+          <div className="relative -mt-[9%] flex justify-center">
+            <div
+              className="relative h-44 w-44 rounded-full md:h-64 md:w-64"
+              style={{
+                background: `radial-gradient(circle at 35% 30%, #fff 0%, ${C.bg} 35%, #F8C9A8 70%, #E99A86 100%)`,
+                boxShadow: `0 30px 60px -20px rgba(0,50,168,0.45)`,
+              }}
+            >
+              <span
+                className="absolute -right-6 top-6 rotate-12 rounded-full px-4 py-2 text-xs font-bold md:-right-10"
+                style={{ background: C.ink, color: C.bg }}
+              >
+                4.9 ★ no Google
+              </span>
+              <span
+                className="absolute -left-8 bottom-8 -rotate-6 rounded-full px-4 py-2 text-xs font-bold"
+                style={{ background: C.bg, color: C.ink }}
+              >
+                Avaliação grátis
+              </span>
             </div>
-            <div className="text-xs" style={{ color: C.soft }}>
-              312 avaliações no Google
+          </div>
+
+          <div className="mt-10 grid gap-8 md:grid-cols-2 md:items-end">
+            <h2
+              className="text-3xl leading-[1.05] md:text-5xl"
+              style={{ color: C.bg }}
+            >
+              Sua pele, no tempo dela.
+            </h2>
+            <div>
+              <p
+                className="max-w-md text-base leading-relaxed"
+                style={{ color: C.bg }}
+              >
+                Tratamentos faciais e corporais a partir de uma avaliação
+                individual. Sem pacote empurrado, sem promessa milagrosa.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a
+                  href={wa("Olá! Quero agendar uma avaliação na Lumi.")}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-bold"
+                  style={{ background: C.ink, color: C.bg }}
+                >
+                  Agendar avaliação <ArrowUpRight className="h-4 w-4" />
+                </a>
+                <a
+                  href="#tratamentos"
+                  className="rounded-full border-2 px-6 py-3 text-sm font-bold"
+                  style={{ borderColor: C.bg, color: C.bg }}
+                >
+                  Ver tratamentos
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Faixa */}
-      <div className="border-y py-5" style={{ borderColor: C.line }}>
-        <div
-          className="mx-auto flex max-w-6xl flex-wrap justify-between gap-4 px-6 text-sm"
-          style={{ color: C.soft }}
-        >
-          <span>Biomédicas especializadas</span>
-          <span>Produtos com registro Anvisa</span>
-          <span>Avaliação sem custo</span>
-          <span>Estacionamento próprio</span>
+      <div
+        className="overflow-hidden py-4"
+        style={{ background: C.ink, color: C.bg }}
+      >
+        <div className="flex gap-10 whitespace-nowrap text-sm font-bold uppercase tracking-widest">
+          {Array.from({ length: 3 }).flatMap((_, k) =>
+            [
+              "Biomédicas especializadas",
+              "✦",
+              "Produtos com registro Anvisa",
+              "✦",
+              "Avaliação sem custo",
+              "✦",
+              "Estacionamento próprio",
+              "✦",
+            ].map((t, i) => <span key={`${k}-${i}`}>{t}</span>),
+          )}
         </div>
       </div>
 
       {/* Tratamentos */}
       <section id="tratamentos" className="mx-auto max-w-6xl px-6 py-24">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <h2 className="text-4xl font-light md:text-5xl">Tratamentos</h2>
+          <h2 className="text-5xl md:text-7xl">Tratamentos</h2>
           <div className="flex gap-2">
             {(Object.keys(tratamentos) as Categoria[]).map((c) => (
               <button
@@ -248,8 +266,8 @@ export function LumiEstetica() {
                 {String(i + 1).padStart(2, "0")}
               </span>
               <span
-                className="col-span-10 text-xl font-light md:col-span-7 md:text-2xl"
-                style={{ fontFamily: "Fraunces, serif" }}
+                className="col-span-10 text-lg md:col-span-7 md:text-2xl"
+                style={{ fontFamily: "'Bowlby One', sans-serif" }}
               >
                 {t.nome}
               </span>
@@ -270,8 +288,8 @@ export function LumiEstetica() {
       {/* Avaliação */}
       <section id="avaliacao" style={{ background: C.ink, color: C.bg }}>
         <div className="mx-auto max-w-6xl px-6 py-24">
-          <h2 className="max-w-xl text-4xl font-light md:text-5xl">
-            Tudo começa com uma <em style={{ color: C.clay }}>conversa.</em>
+          <h2 className="max-w-2xl text-4xl md:text-6xl">
+            Tudo começa com uma <span style={{ color: C.clay }}>conversa.</span>
           </h2>
           <div className="mt-16 grid gap-10 md:grid-cols-3">
             {[
@@ -296,7 +314,7 @@ export function LumiEstetica() {
                 <div className="text-sm" style={{ color: C.clay }}>
                   0{i + 1}
                 </div>
-                <h3 className="mt-3 text-2xl font-light">{t}</h3>
+                <h3 className="mt-3 text-2xl">{t}</h3>
                 <p className="mt-3 text-sm leading-relaxed opacity-70">{d}</p>
               </div>
             ))}
@@ -319,8 +337,8 @@ export function LumiEstetica() {
           ].map(([q, a]) => (
             <figure key={a}>
               <blockquote
-                className="text-2xl font-light leading-snug md:text-3xl"
-                style={{ fontFamily: "Fraunces, serif" }}
+                className="text-xl leading-snug md:text-2xl"
+                style={{ fontFamily: "'Bowlby One', sans-serif" }}
               >
                 “{q}”
               </blockquote>
@@ -336,13 +354,13 @@ export function LumiEstetica() {
       <section id="contato" className="mx-auto max-w-6xl px-6 pb-24">
         <div
           className="grid gap-10 rounded-[2rem] p-10 md:grid-cols-2 md:p-14"
-          style={{ background: "#EADFD6" }}
+          style={{ background: C.clay, color: C.bg }}
         >
           <div>
-            <h2 className="text-4xl font-light">Agende sua avaliação</h2>
+            <h2 className="text-4xl md:text-5xl">Agende sua avaliação</h2>
             <p
               className="mt-4 text-sm leading-relaxed"
-              style={{ color: C.soft }}
+              style={{ opacity: 0.75 }}
             >
               Respondemos pelo WhatsApp em até 1 hora no horário de atendimento.
             </p>
@@ -358,21 +376,21 @@ export function LumiEstetica() {
           </div>
           <dl className="grid grid-cols-2 gap-6 text-sm">
             <div>
-              <dt style={{ color: C.soft }}>Endereço</dt>
+              <dt style={{ opacity: 0.75 }}>Endereço</dt>
               <dd className="mt-1">
                 Rua dos Navegantes, 1200 — Boa Viagem, Recife
               </dd>
             </div>
             <div>
-              <dt style={{ color: C.soft }}>Horário</dt>
+              <dt style={{ opacity: 0.75 }}>Horário</dt>
               <dd className="mt-1">Seg a sex, 9h–19h · Sáb, 9h–13h</dd>
             </div>
             <div>
-              <dt style={{ color: C.soft }}>Instagram</dt>
+              <dt style={{ opacity: 0.75 }}>Instagram</dt>
               <dd className="mt-1">@lumi.estetica</dd>
             </div>
             <div>
-              <dt style={{ color: C.soft }}>Telefone</dt>
+              <dt style={{ opacity: 0.75 }}>Telefone</dt>
               <dd className="mt-1">(81) 90000-0000</dd>
             </div>
           </dl>

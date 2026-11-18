@@ -117,7 +117,7 @@ function SocialLink({
       rel="noreferrer"
       className={`inline-flex items-center gap-2.5 rounded-xl px-3 py-2 text-sm font-medium transition-all ${
         highlight
-          ? "bg-[#25D366]/10 text-[#25D366] hover:bg-[#25D366]/20 border border-[#25D366]/20"
+          ? "bg-brand text-ink hover:opacity-90 border border-brand"
           : "glass hover:bg-white/10 text-muted-foreground hover:text-foreground border border-transparent"
       } ${className}`}
     >
