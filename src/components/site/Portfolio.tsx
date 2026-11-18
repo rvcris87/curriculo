@@ -65,6 +65,7 @@ function EmbeddedProject({
   const [device, setDevice] = useState<"desktop" | "mobile">("desktop");
   const [active, setActive] = useState(false);
   const [touch, setTouch] = useState(false);
+  const [fullHeight, setFullHeight] = useState<number | null>(null);
   const activeRef = useRef(false);
   const frameRef = useRef<HTMLDivElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -113,6 +114,16 @@ function EmbeddedProject({
     const doc = iframeRef.current?.contentDocument;
     if (!doc) return; // site externo: sem controle, comportamento padrão do navegador
     doc.addEventListener("pointerdown", () => setActive(true));
+
+    // Celular: o site embutido ganha a altura total e quem rola é a moldura em volta.
+    // (Navegadores móveis nem sempre entregam o deslizar do dedo para dentro de um iframe.)
+    if (window.matchMedia("(hover: none)").matches) {
+      const measure = () => setFullHeight(doc.documentElement.scrollHeight);
+      measure();
+      const ro = new ResizeObserver(measure);
+      ro.observe(doc.body);
+    }
+
     doc.addEventListener(
       "wheel",
       (e) => {
@@ -238,15 +249,27 @@ function EmbeddedProject({
               : "h-[70vh] min-h-[460px] md:h-[680px]"
           }`}
         >
-          <iframe
-            ref={iframeRef}
-            src={p.url}
-            title={`Site ${p.title}`}
-            loading="lazy"
-            onLoad={onIframeLoad}
-            className="h-full w-full border-0"
-            style={{ pointerEvents: touch && !active ? "none" : "auto" }}
-          />
+          <div
+            className="h-full w-full"
+            style={{
+              overflowY: touch && active ? "auto" : "hidden",
+              WebkitOverflowScrolling: "touch",
+            }}
+          >
+            <iframe
+              ref={iframeRef}
+              src={p.url}
+              title={`Site ${p.title}`}
+              loading="lazy"
+              onLoad={onIframeLoad}
+              scrolling={touch && fullHeight ? "no" : undefined}
+              className="block w-full border-0"
+              style={{
+                height: touch && fullHeight ? `${fullHeight}px` : "100%",
+                pointerEvents: touch && !active ? "none" : "auto",
+              }}
+            />
+          </div>
 
           {/* Desktop: aviso discreto de como rolar dentro do site */}
           {!touch && (
